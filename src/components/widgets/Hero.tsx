@@ -133,7 +133,7 @@ export const Header = () => {
         }}
         className={cn("pt-20 text-center text-xl md:text-4xl")}
       >
-        F.E.T.S.U. PRESENTS
+        IEM PRESENTS
       </motion.h2>
       <motion.h1
         initial={{ opacity: 0.5, y: 100 }}
@@ -148,7 +148,7 @@ export const Header = () => {
           tiaraFont.className
         )}
       >
-        Sanskriti 2025
+        Smart Maker Festival 2025
       </motion.h1>
       <motion.h2
         initial={{ opacity: 0.5, y: 100 }}
@@ -163,7 +163,7 @@ export const Header = () => {
           tiaraFont.className
         )}
       >
-        redefining culture...
+        redefining technology...
       </motion.h2>
       {/* <ShiftingCountdown targetDate="04/05/2025" /> */}
     </>
