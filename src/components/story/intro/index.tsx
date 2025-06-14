@@ -1,5 +1,7 @@
+"use client";
+
 import clsx from "clsx";
-import * as Scrollytelling from "@bsmnt/scrollytelling";
+import { Root, Parallax, Animation } from "@bsmnt/scrollytelling";
 import Image from "next/image";
 
 import s from "./intro.module.scss";
@@ -8,9 +10,9 @@ import { tiaraFont } from "@/lib/fonts";
 
 export const LabIntro = () => {
   return (
-    <Scrollytelling.Root start="top bottom" end="bottom top" scrub={1.1}>
+    <Root start="top bottom" end="bottom top" scrub={1.1}>
       <div className={s.container}>
-        <Scrollytelling.Parallax
+        <Parallax
           tween={{
             start: 0,
             end: 100,
@@ -33,9 +35,9 @@ export const LabIntro = () => {
               strokeDasharray="7 7"
             />
           </svg>
-        </Scrollytelling.Parallax>
+        </Parallax>
 
-        <Scrollytelling.Parallax
+        <Parallax
           tween={{
             start: 0,
             end: 100,
@@ -43,40 +45,49 @@ export const LabIntro = () => {
           }}
         >
           <h2 className={cn(s.title, "tracking-widest", tiaraFont.className)}>
-            : what is sanskriti ? :
+            : what is Smart Maker Festival ? :
           </h2>
-        </Scrollytelling.Parallax>
+        </Parallax>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 mt-16 mb-12 px-4">
           <div className="flex-shrink-0">
-            <Image 
-              src="/sanskriti.png"
-              alt="Sanskriti Logo"
+            <Image
+              src="/smf2025.png"
+              alt="Smart Maker Festival 2025 Logo"
               width={700}
               height={700}
               className="object-contain"
               priority
             />
           </div>
-          
+
           <div className="md:max-w-4xl">
-            <p className={cn("md:text-left text-center text-xs md:text-2xl leading-relaxed", tiaraFont.className)}>
-              Sanskriti is a celebration of hope. The very word &#40;origin
-              Sanskrit: Sanskaar&#41; contains a hint of mending, and reconstruction
-              and is a relentless effort towards upliftment and perfection. From its
-              mere facade, Sanskriti is a fest, a cultural festival but to us, the
-              students of Jadavpur University, Sanskriti is a guiding force, a path
-              we take in our attempt to redefine culture. It is an endeavor to break
-              down the shackles of defined cultural norms and to set new boundaries,
-              only to reinvent against those. Through its living heritage of 30
-              years, Sanskriti has given shape to ideas - new and bright and cradled
-              feelings of warmth and endearment. It has spread its wings to include
-              much more - a film festival &#40;Chhayanat&#41;, a tech fest
-              &#40;Srijan&#41;, and a freshers&#39; welcome U-Turn. As we strive
-              every year to bring light to the concept that Sanskriti embodies -
-              igniting the fire of life and hope into a morbid, stale state, we dig
-              up a world that existed only in imagination. Sanskriti is the literal
-              unfolding of the magic that life is.
+            <p
+              className={cn(
+                "md:text-left text-center text-xs md:text-2xl leading-relaxed",
+                tiaraFont.className
+              )}
+            >
+              The <strong>SMART Maker Festival 2025</strong> is a non-profit,
+              family-friendly celebration of creativity, innovation, and hands-on
+              invention. Since its Indian debut in 2019, SMF has grown into one of
+              the most dynamic gatherings of tech enthusiasts, artists, scientists,
+              and makers. SMF 2020 and 2021 saw a digital transformation amid global
+              challenges, hosting virtual showcases and workshops. In 2022, the
+              festival made a hybrid comeback, reigniting the spirit of innovation.
+              SMF 2023 expanded its reach with greater participation, while SMF 2024
+              was a record-breaking event in Kolkata, drawing thousands to celebrate
+              science, art, and technology. <br /> <br />
+              Now, <strong>SMART Maker Festival 2025</strong> returns grander than
+              ever with science exhibitions, innovative project competitions,
+              quizzes, photography and filmmaking contests, food stalls,
+              handicrafts, and expert panel discussions. It continues to be a
+              platform for showcasing ideas, learning, and collaboration.{" "}
+              <span className="text-tiara_red font-bold">
+                "THE ANTICIPATION ENDS HERE!!!"
+              </span>{" "}
+              — the SMART Maker Festival 2025 is back to empower the creators of
+              tomorrow.
             </p>
           </div>
         </div>
@@ -84,7 +95,7 @@ export const LabIntro = () => {
         <div className={s.marquees}>
           <Marquee className={s.marquee1} orange />
           <Marquee className={s.marquee2} reverse />
-          <Scrollytelling.Animation
+          <Animation
             tween={[
               {
                 start: 0,
@@ -102,11 +113,9 @@ export const LabIntro = () => {
           />
         </div>
       </div>
-    </Scrollytelling.Root>
+    </Root>
   );
 };
-
-// MARQUEE STUFF
 
 const Marquee = ({
   reverse,
@@ -139,8 +148,8 @@ const Marquee = ({
               tiaraFont.className
             )}
           >
-            Sans<span className="text-tiara_red">kri</span>ti{" "}
-            <span className="text-tiara_red">{"'"}</span>25
+            SMART<span className="text-tiara_red">MAKER</span>{" "}
+            <span className="text-tiara_red">'25</span>
           </div>
         ))}
       </div>

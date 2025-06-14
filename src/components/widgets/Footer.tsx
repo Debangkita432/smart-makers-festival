@@ -34,9 +34,9 @@ const Footer = () => {
               General Convenors
             </p>
             <div className="flex flex-col gap-3 md:text-left text-zinc-200 CaptainFont  text-lg tracking-wider">
-              <p>Biraj Barua : +91 7001642970</p>
-              <p>Dipak Lo : +91 9064217175</p>
-              <p>Tamal Roy Chowdhury : +91 8918928140</p>
+              <p>ABC : +91 1000000000</p>
+              <p>ABC : +91 1000000000</p>
+              <p>ABC : +91 1000000000</p>
             </div>
           </div>
           <div>
@@ -44,8 +44,8 @@ const Footer = () => {
               Finance Convenors
             </p>
             <div className="flex flex-col gap-3 md:text-left text-zinc-200 CaptainFont text-lg tracking-wider">
-              <p>Akash Ghosh : +91 8509130836</p>
-              <p>Reetam Das : +91 8584899256</p>
+              <p>ABC : +91 1000000000</p>
+              <p>ABC : +91 1000000000</p>
             </div>
           </div>
 
@@ -54,8 +54,8 @@ const Footer = () => {
               Event Coordinator
             </p>
             <div className="flex flex-col gap-3 md:text-left text-zinc-200 CaptainFont  text-lg tracking-wider">
-              <p>Gaurav Bose : +91 8017469943</p>
-              <p>Tiyasa Mondal : +91 9903898874</p>
+              <p>ABC : +91 1000000000</p>
+              <p>ABC : +91 1000000000</p>
             </div>
           </div>
         </div>
@@ -68,10 +68,10 @@ const Footer = () => {
             tiaraFont.className
           )}
         >
-          Sanskriti 25
+          Smart Maker Festival 25
         </a>
         <p className="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4 ">
-          © 2025 Sanskriti
+          © 2025 Smart Maker Festival
         </p>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
           <div className=" gap-4 flex">

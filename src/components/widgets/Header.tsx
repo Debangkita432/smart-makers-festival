@@ -47,7 +47,7 @@ export function Header() {
                   tiaraFont.className
                 )}
               >
-                Sanskriti{" "}
+                SMF{" "}
                 <span className="text-tiara_red text-xl lg:text-3xl">2025</span>
               </h2>
             </Link>
