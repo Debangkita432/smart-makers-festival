@@ -1,4 +1,4 @@
-# Sanskriti-2k25
+# SMF-2k25
 
 A modern web application for the Sanskriti 2025 cultural festival, built with Next.js, TypeScript, Prisma, and Tailwind CSS.
 
