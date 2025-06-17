@@ -16,6 +16,7 @@
     "@dnd-kit/modifiers": "^7.0.0",
     "@dnd-kit/sortable": "^8.0.0",
     "@dnd-kit/utilities": "^3.2.2",
+    "@egjs/react-axes": "^3.3.2",
     "@gsap/react": "^2.1.1",
     "@hookform/resolvers": "^3.3.4",
     "@prisma/client": "^5.13.0",
@@ -86,6 +87,7 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",
+    "@types/egjs__axes": "^2.0.2",
     "@types/lodash": "^4.17.1",
     "@types/node": "^20",
     "@types/nodemailer": "^6.4.15",

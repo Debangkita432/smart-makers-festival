@@ -12,10 +12,10 @@ export default function About() {
           id="about"
           className={cn("text-6xl text-center", tiaraFont.className)}
         >
-          About Smart Makers Festival
+          Glimpses from Previous Editions
         </h1>
 
-        <p className="text-center text-lg leading-relaxed">
+        {/* <p className="text-center text-lg leading-relaxed">
           The <strong>SMART Maker Festival 2025</strong> is a non-profit,
           family-friendly celebration of creativity, innovation, and hands-on
           invention. Since its Indian debut in 2019, SMF has grown into one of
@@ -34,10 +34,10 @@ export default function About() {
           <br />
           <strong>"THE ANTICIPATION ENDS HERE!!!"</strong> — the SMART Maker
           Festival 2025 is back to empower the creators of tomorrow.
-        </p>
+        </p> */}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-8 px-6 sm:px-12">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-8 px-6 sm:px-12">
   <iframe
     className="w-full h-[450px] rounded-xl shadow-lg"
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.895617438381!2d88.42738317598728!3d22.5676041794975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275a91031a813%3A0x103edacdfb7580e7!2sIEM%20Management%20Building!5e0!3m2!1sen!2sin!4v1718287159983!5m2!1sen!2sin"
@@ -53,7 +53,7 @@ export default function About() {
     allowFullScreen
     referrerPolicy="no-referrer-when-downgrade"
   ></iframe>
-</div>
+</div> */}
 
     </Container>
   );

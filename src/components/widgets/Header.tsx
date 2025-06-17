@@ -23,7 +23,7 @@ const navItems: NavItem[] = [
     href: "/events",
   },
   {
-    label: "about",
+    label: "Gallery",
     href: "/about",
   },
 ];
@@ -87,8 +87,8 @@ export function Header() {
                   tiaraFont.className
                 )}
               >
-                <Link href={"./brochure.pdf"} target="_blank">
-                  All Events Brochure
+                <Link href={"./coming.png"} target="_blank">
+                  Register Now
                 </Link>
               </Button>
             </div>

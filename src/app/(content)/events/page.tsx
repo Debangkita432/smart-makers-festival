@@ -4,6 +4,9 @@ import { Link, LinkProps } from "@/components/ui/hover/link";
 import { useEffect, useState } from "react";
 import { tiaraFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import Brochure from "@/components/ui/brochure";
+import Guest from "@/components/ui/guest";
+
 
 export default function EventsPage() {
   const [categories, setCategories] = useState<LinkProps[]>([]);
@@ -42,6 +45,10 @@ export default function EventsPage() {
           />
         ))}
       </div>
+      <Brochure />
+      <Guest />
+      
     </>
   );
+ 
 }

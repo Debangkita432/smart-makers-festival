@@ -1,4 +1,5 @@
 "use client";
+
 import {
   MotionValue,
   motion,
@@ -8,8 +9,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import React from "react";
-import { LampContainer } from "../ui/lamp";
-import ShiftingCountdown from "./Countdown";
+import { LampContainer } from "@/components/ui/lamp";
 import { tiaraFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
@@ -45,19 +45,11 @@ export const HeroParallax = ({
   const springConfig = { stiffness: 200, damping: 30, bounce: 0 };
 
   const translateX = useSpring(
-    useTransform(
-      scrollYProgress,
-      [0, 1],
-      [isMobile ? -300 : -900, isMobile ? 300 : 900]
-    ),
+    useTransform(scrollYProgress, [0, 1], [isMobile ? -300 : -900, isMobile ? 300 : 900]),
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(
-      scrollYProgress,
-      [0, 1],
-      [isMobile ? -300 : -900, isMobile ? -500 : -1200]
-    ),
+    useTransform(scrollYProgress, [0, 1], [isMobile ? -300 : -900, isMobile ? -500 : -1200]),
     springConfig
   );
   const rotateX = useSpring(
@@ -73,19 +65,17 @@ export const HeroParallax = ({
     springConfig
   );
   const translateY = useSpring(
-    useTransform(
-      scrollYProgress,
-      [0, 0.2],
-      [isMobile ? -220 : -600, isMobile ? 180 : 400]
-    ),
+    useTransform(scrollYProgress, [0, 0.2], [isMobile ? -220 : -600, isMobile ? 180 : 400]),
     springConfig
   );
+
   return (
     <div
       ref={ref}
-      className="-z-10 h-auto overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] w-full"
+      className="-z-10 h-auto overflow-x-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] w-full"
     >
       <Header />
+
       <motion.div
         style={{
           rotateX,
@@ -93,28 +83,31 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className=""
       >
-        <motion.div className="flex flex-row space-x-4 sm:space-x-10 md:space-x-20 mb-6 sm:mb-10 md:mb-20 overflow-visible w-screen -ml-[16px] sm:-ml-[24px] md:-ml-[32px] pl-0">
+        {/* Row 1 */}
+        <motion.div className="flex flex-row space-x-4 sm:space-x-10 md:space-x-20 mb-10 px-4 sm:px-8 md:px-16 overflow-visible w-full">
           {firstRow.map((image, index) => (
             <ImageCard image={image} translate={translateX} key={index} />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row mb-6 sm:mb-10 md:mb-20 space-x-4 sm:space-x-10 md:space-x-20 overflow-visible w-screen -ml-[16px] sm:-ml-[24px] md:-ml-[32px] pl-0">
+
+        {/* Row 2 */}
+        <motion.div className="flex flex-row space-x-4 sm:space-x-10 md:space-x-20 mb-10 px-4 sm:px-8 md:px-16 overflow-visible w-full">
           {secondRow.map((image, index) => (
-            <ImageCard
-              image={image}
-              translate={translateXReverse}
-              key={index}
-            />
+            <ImageCard image={image} translate={translateXReverse} key={index} />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row space-x-4 sm:space-x-10 md:space-x-20 pb-[16rem] sm:pb-[24rem] md:pb-[32rem] lg:pb-[32rem] overflow-visible w-screen -ml-[16px] sm:-ml-[24px] md:-ml-[32px] pl-0">
+
+        {/* Row 3 */}
+        <motion.div className="flex flex-row space-x-4 sm:space-x-10 md:space-x-20 px-4 sm:px-8 md:px-16 overflow-visible w-full">
           {thirdRow.map((image, index) => (
             <ImageCard image={image} translate={translateX} key={index} />
           ))}
         </motion.div>
       </motion.div>
+
+      {/* Add Large Bottom Spacer */}
+      <div className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh]" />
     </div>
   );
 };
@@ -126,11 +119,7 @@ export const Header = () => {
       <motion.h2
         initial={{ opacity: 0.5, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.3,
-          duration: 0.8,
-          ease: "easeInOut",
-        }}
+        transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
         className={cn("pt-20 text-center text-xl md:text-4xl")}
       >
         IEM PRESENTS
@@ -138,11 +127,7 @@ export const Header = () => {
       <motion.h1
         initial={{ opacity: 0.5, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.3,
-          duration: 0.8,
-          ease: "easeInOut",
-        }}
+        transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
         className={cn(
           "pt-20 text-center text-5xl md:text-6xl lg:text-9xl text-tiara_red",
           tiaraFont.className
@@ -153,19 +138,11 @@ export const Header = () => {
       <motion.h2
         initial={{ opacity: 0.5, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.3,
-          duration: 0.8,
-          ease: "easeInOut",
-        }}
-        className={cn(
-          "mt-2 text-center text-xl md:text-4xl",
-          tiaraFont.className
-        )}
+        transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
+        className={cn("mt-2 text-center text-xl md:text-4xl", tiaraFont.className)}
       >
         redefining technology...
       </motion.h2>
-      {/* <ShiftingCountdown targetDate="04/05/2025" /> */}
     </>
   );
 };
@@ -182,23 +159,19 @@ export const ImageCard = ({
 }) => {
   return (
     <motion.div
-      style={{
-        x: translate,
-      }}
-      whileHover={{
-        y: -20,
-      }}
-      className="h-40 sm:h-80 md:h-96 w-[12rem] sm:w-[20rem] md:w-[30rem] relative flex-shrink-0 origin-left"
+      style={{ x: translate }}
+      whileHover={{ y: -20 }}
+      className="w-[12rem] sm:w-[18rem] md:w-[22rem] flex-shrink-0 origin-left"
     >
-      <Image
-        src={image.src}
-        height="600"
-        width="600"
-        unoptimized={image.src.includes("githubusercontent.com")}
-        className="object-cover object-center absolute h-full w-full inset-0 rounded-lg"
-        alt={image.alt}
-      />
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
+      <div className="w-full aspect-square relative rounded-lg overflow-hidden shadow-md">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          unoptimized={image.src.includes("githubusercontent.com")}
+          className="object-cover object-center rounded-lg"
+        />
+      </div>
     </motion.div>
   );
 };
