@@ -22,7 +22,7 @@ export const LampContainer = () => {
         ref={ref}
         style={
           {
-            "--bottom": "#ef4444",
+            "--bottom": "#001f4d",
           } as WrapperStyle
         }
       />

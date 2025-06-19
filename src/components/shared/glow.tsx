@@ -8,10 +8,7 @@ interface MousePosition {
 }
 
 const Glow: React.FC = () => {
-  const [mousePosition, setMousePosition] = useState<MousePosition>({
-    x: 0,
-    y: 0,
-  });
+  const [mousePosition, setMousePosition] = useState<MousePosition>({ x: 0, y: 0 });
   const [isMouseInViewport, setIsMouseInViewport] = useState(false);
 
   const glowRef = useRef<HTMLDivElement>(null);
@@ -22,13 +19,8 @@ const Glow: React.FC = () => {
       setIsMouseInViewport(true);
     };
 
-    const handleMouseEnter = () => {
-      setIsMouseInViewport(true);
-    };
-
-    const handleMouseLeave = () => {
-      setIsMouseInViewport(false);
-    };
+    const handleMouseEnter = () => setIsMouseInViewport(true);
+    const handleMouseLeave = () => setIsMouseInViewport(false);
 
     const handleTouchStart = (event: TouchEvent) => {
       const touch = event.touches[0];
@@ -42,9 +34,7 @@ const Glow: React.FC = () => {
       setIsMouseInViewport(true);
     };
 
-    const handleTouchEnd = () => {
-      setIsMouseInViewport(false);
-    };
+    const handleTouchEnd = () => setIsMouseInViewport(false);
 
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseenter", handleMouseEnter);
@@ -64,15 +54,15 @@ const Glow: React.FC = () => {
   }, []);
 
   const glowStyle: React.CSSProperties = {
-    position: "fixed" as const,
+    position: "fixed",
     top: mousePosition.y,
     left: mousePosition.x,
     width: "175px",
     height: "175px",
-    backgroundColor: "hsla(356, 85%, 48%, 0.5)",
+    backgroundColor: "hsla(210, 100%, 60%, 0.5)", // 🔵 changed to soft blue
     borderRadius: "50%",
     transform: "translate(-50%, -50%)",
-    display: isMouseInViewport ? "block" : "hidden",
+    display: isMouseInViewport ? "block" : "none",
   };
 
   return (

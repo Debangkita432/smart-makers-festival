@@ -11,13 +11,18 @@ import type { Metadata } from "next";
 import { SessionProvider } from "next-auth/react";
 import { Inter } from "next/font/google";
 import Script from "next/script";
+// app/layout.tsx (or _app.tsx)
+import { orbitronFont } from "@/lib/fonts";
+
+
+
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 export const metadata: Metadata = {
-  title: "Sanskriti 2025",
-  description: "Sanskriti 2025",
+  title: "Smart Maker Festival 2025",
+  description: "Smart Maker Festival 2025",
   icons: {
-    icon: "/favicon.png",
+    icon: "/coming.png",
   },
 };
 

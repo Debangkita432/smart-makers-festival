@@ -32,7 +32,7 @@ export default function Home() {
   console.log(session);
 
   return (
-    <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col py-0">
+    <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col py-0 font-orbitron">
       <Lenis>
         <HeroParallax images={images} />
         <LabIntro />

@@ -8,6 +8,15 @@ import useEmblaCarousel, {
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+// lib/fonts.ts
+
+import { Orbitron } from "next/font/google";
+
+export const orbitronFont = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
+
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>

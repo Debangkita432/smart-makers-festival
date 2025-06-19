@@ -10,8 +10,8 @@ import {
 import Image from "next/image";
 import React from "react";
 import { LampContainer } from "@/components/ui/lamp";
-import { tiaraFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import { orbitronFont } from "@/lib/fonts";
 
 export const HeroParallax = ({
   images,
@@ -129,8 +129,8 @@ export const Header = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
         className={cn(
-          "pt-20 text-center text-5xl md:text-6xl lg:text-9xl text-tiara_red",
-          tiaraFont.className
+          "pt-20 text-center text-5xl md:text-6xl lg:text-9xl text-[#00bfff]",
+          orbitronFont.className
         )}
       >
         Smart Maker Festival 2025
@@ -139,7 +139,7 @@ export const Header = () => {
         initial={{ opacity: 0.5, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-        className={cn("mt-2 text-center text-xl md:text-4xl", tiaraFont.className)}
+        className={cn("mt-2 text-center text-xl md:text-4xl", orbitronFont.className)}
       >
         redefining technology...
       </motion.h2>
