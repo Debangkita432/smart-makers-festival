@@ -2,22 +2,24 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "./button";
 import { cn } from "@/lib/utils";
-import { tiaraFont } from "@/lib/fonts";
+import { orbitronFont } from "@/lib/fonts";
 
 export default function Brochure() {
   return (
     <div className="flex items-center justify-center my-8">
-      <Link href="/coming.png" target="_blank" rel="noopener noreferrer">
-        <Button
-          className={cn(
-            "w-full max-w-sm rounded text-xl bg-tiara_red text-white hover:bg-red-600 transition-all ease-in-out hover:scale-125 hover:delay-150",
-            tiaraFont.className
-          )}
-        >
+      <Button
+        asChild
+        className={cn(
+          "px-12 py-5 text-lg font-semibold rounded-[1rem]",
+          "bg-[#001f4d] text-white hover:bg-[#000d26]",
+          "shadow-[0_0_15px_4px_rgba(255,255,255,0.25)] hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.4)]",
+          orbitronFont.className
+        )}
+      >
+        <Link href="/coming.png" target="_blank" rel="noopener noreferrer">
           Download Event Brochure
-        </Button>
-      </Link>
+        </Link>
+      </Button>
     </div>
   );
 }
-

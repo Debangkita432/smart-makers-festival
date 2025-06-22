@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { tiaraFont } from "@/lib/fonts";
+import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
 // Teacher Coordinator (single card)
@@ -19,28 +19,28 @@ const teamMembers = Array.from({ length: 10 }).map((_, i) => ({
 export function Team() {
   return (
     <div className="h-fit">
-      {[ 
+      {[
         {
-          title: "teacher coordinator",
+          title: "Teacher coordinator",
           data: coordinators,
           gridClass: "grid-cols-1",
         },
         {
-          title: "technical team",
+          title: "Core team",
           data: teamMembers,
           gridClass: "grid-cols-2 lg:grid-cols-5",
         },
       ].map(({ title, data, gridClass }, sectionIndex) => (
-        <div key={sectionIndex} className="mb-24">
+        <div key={sectionIndex} className="mb-20">
           {/* Section Heading */}
           <div className="flex justify-center items-center pt-20 z-50">
             <div
               className={cn(
-                "text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center tracking-widest",
-                tiaraFont.className
+                "text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center tracking-widest text-white",
+                orbitronFont.className
               )}
             >
-              <h1 className="text-[#F59E0B]">{title}</h1>
+              <h1>{title}</h1>
             </div>
           </div>
 
@@ -49,7 +49,7 @@ export function Team() {
             <div
               className={cn(
                 "p-6 sm:p-10 grid max-w-[1400px] w-full",
-                "gap-x-6 gap-y-14 place-items-center",
+                "gap-x-4 gap-y-10 place-items-center",
                 gridClass
               )}
             >
@@ -72,7 +72,7 @@ export function Team() {
                   <div className="absolute inset-0 z-10 bg-white rounded-xl flex items-end p-3 sm:p-4 transition-transform duration-500 ease-in-out group-hover:translate-x-4 group-hover:translate-y-8">
                     <div className="text-center w-full">
                       <h2 className="text-sm font-bold text-black">{person.name}</h2>
-                      <p className="text-[#F59E0B] text-xs">{person.role}</p>
+                      <p className="text-[#1c58b3] text-xs">{person.role}</p>
                     </div>
                   </div>
                 </div>

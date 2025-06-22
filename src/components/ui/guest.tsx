@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { PanInput, WheelInput } from "@egjs/react-axes";
-import { tiaraFont } from "@/lib/fonts";
+import { orbitronFont } from "@/lib/fonts";
 
 const COUNT = 10;
 const ANGLE = 360 / COUNT;
@@ -26,25 +26,26 @@ export default function Carousel(): React.JSX.Element {
   };
 
   useEffect(() => {
-    // Show first card, then start rotation
     updateTransform();
     timeoutRef.current = setTimeout(rotateStep, 3000);
 
-    return () => timeoutRef.current && clearTimeout(timeoutRef.current);
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
   }, []);
 
   // Enable drag & scroll gestures
   useEffect(() => {
     const cards = document.querySelectorAll(".carousel-touch-area");
     cards.forEach((el) => {
-      const pan = new PanInput(el, { inputType: ["touch", "mouse"], scale: [1, 0] });
-      const wheel = new WheelInput(el, { useNormalized: false });
-      pan.connect(el);
-      wheel.connect(el);
+      const element = el as HTMLElement;
+      const pan = new PanInput(element, { inputType: ["touch", "mouse"], scale: [1, 0] });
+      const wheel = new WheelInput(element, { useNormalized: false });
+      pan.connect(element);
+      wheel.connect(element);
     });
   }, []);
 
-  // Manual navigation
   const rotateLeft = () => {
     rotationRef.current += ANGLE;
     updateTransform();
@@ -61,7 +62,7 @@ export default function Carousel(): React.JSX.Element {
 
   return (
     <div className="carousel-container">
-      <h2 className={`carousel-heading ${tiaraFont.className}`}>Our Guests</h2>
+      <h2 className={`carousel-heading ${orbitronFont.className}`}>Our Guests</h2>
 
       <div id="carouselWrapper">
         <div className="list_container">
@@ -83,13 +84,11 @@ export default function Carousel(): React.JSX.Element {
         </div>
       </div>
 
-      {/* Navigation Buttons */}
       <div className="nav-buttons">
         <button onClick={rotateLeft}>&larr;</button>
         <button onClick={rotateRight}>&rarr;</button>
       </div>
 
-      {/* CSS */}
       <style jsx>{`
         .carousel-container {
           position: relative;
@@ -102,8 +101,8 @@ export default function Carousel(): React.JSX.Element {
         .carousel-heading {
           font-size: 2.8rem;
           font-weight: 600;
-          color: #facc15;
-          text-align: center;
+          color: #00bfff;
+          text-align: left;
           margin-bottom: 2rem;
           letter-spacing: 2px;
         }

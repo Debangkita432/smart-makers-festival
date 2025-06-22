@@ -1,103 +1,92 @@
 import Link from "next/link";
 import InstagramIcon from "../icons/InstagramIcon";
-import WebsiteIcon from "../icons/WebsiteIcon";
 import EmailIcon from "../icons/EmailIcon";
-import PhoneIcon from "../icons/PhoneIcon";
-import { basementFont, tiaraFont } from "@/lib/fonts";
+import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { FiFacebook } from "react-icons/fi";
-import s from "../story/intro/intro.module.scss";
 
 const Footer = () => {
   return (
-    <footer className="body-font w-full flex flex-col justify-center items-center">
-      <div className="w-full text-center flex flex-col justify-center items-center overflow-hidden relative">
-        <div
-          className={cn(
-            "text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl w-fit text-center duration-500",
-            tiaraFont.className
-          )}
-        >
-          <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#F59E0B]">
-            contact us
-          </h1>
+    <footer className="w-full text-white px-6 md:px-12 pt-16 pb-10 bg-transparent">
+      {/* Title */}
+      <h2
+        className={cn(
+          "text-4xl sm:text-5xl text-center mb-14 tracking-wider",
+          orbitronFont.className
+        )}
+      >
+        Contact Us
+      </h2>
+
+      {/* Grid Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left mb-12 max-w-6xl mx-auto">
+        {/* General Convenors */}
+        <div>
+          <h3 className="text-xl font-semibold mb-4 underline underline-offset-4 text-white text-center">
+            General Convenors
+          </h3>
+          <ul className="space-y-2 text-gray-300 text-sm text-center">
+            <li>ABC : +91 1000000000</li>
+            <li>ABC : +91 1000000000</li>
+            <li>ABC : +91 1000000000</li>
+          </ul>
         </div>
 
-        <div
-          className={cn(
-            "md:grid md:grid-cols-3 flex flex-col gap-20 py-8 content-center md:text-left",
-            basementFont.className
-          )}
-        >
-          <div>
-            <p className="text-zinc-200 ProgressFont text-2xl py-2 underline underline-offset-8">
-              General Convenors
-            </p>
-            <div className="flex flex-col gap-3 md:text-left text-zinc-200 CaptainFont  text-lg tracking-wider">
-              <p>ABC : +91 1000000000</p>
-              <p>ABC : +91 1000000000</p>
-              <p>ABC : +91 1000000000</p>
-            </div>
-          </div>
-          <div>
-            <p className="text-zinc-200 ProgressFont text-2xl py-2 underline underline-offset-8">
-              Finance Convenors
-            </p>
-            <div className="flex flex-col gap-3 md:text-left text-zinc-200 CaptainFont text-lg tracking-wider">
-              <p>ABC : +91 1000000000</p>
-              <p>ABC : +91 1000000000</p>
-            </div>
-          </div>
+        {/* Finance Convenors */}
+        <div>
+          <h3 className="text-xl font-semibold mb-4 underline underline-offset-4 text-white text-center">
+            Finance Convenors
+          </h3>
+          <ul className="space-y-2 text-gray-300 text-sm text-center">
+            <li>ABC : +91 1000000000</li>
+            <li>ABC : +91 1000000000</li>
+          </ul>
+        </div>
 
-          <div>
-            <p className="text-zinc-200 ProgressFont text-2xl py-2 underline underline-offset-8">
-              Event Coordinator
-            </p>
-            <div className="flex flex-col gap-3 md:text-left text-zinc-200 CaptainFont  text-lg tracking-wider">
-              <p>ABC : +91 1000000000</p>
-              <p>ABC : +91 1000000000</p>
-            </div>
-          </div>
+        {/* Event Coordinators */}
+        <div>
+          <h3 className="text-xl font-semibold mb-4 underline underline-offset-4 text-white text-center">
+            Event Coordinators
+          </h3>
+          <ul className="space-y-2 text-gray-300 text-sm text-center">
+            <li>ABC : +91 1000000000</li>
+            <li>ABC : +91 1000000000</li>
+          </ul>
         </div>
       </div>
-      <div className="container w-full px-16 py-8 mx-auto flex items-center sm:flex-row flex-col">
-        <a
-          href="/"
-          className={cn(
-            "flex title-font font-medium tracking-widest items-center md:justify-start justify-center prose text-white",
-            tiaraFont.className
-          )}
-        >
-          Smart Maker Festival 25
-        </a>
-        <p className="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4 ">
+
+      {/* Bottom Bar */}
+      <div className="max-w-6xl mx-auto border-t border-gray-700 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p className="text-sm text-gray-400 text-center sm:text-left">
           © 2025 Smart Maker Festival
         </p>
-        <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-          <div className=" gap-4 flex">
-            <a
-              className="ml-3 text-white hover:text-tiara_red transition-all grid-cols-2"
-              href="https://www.instagram.com/fetsu_presents_sanskriti/"
-              target="_blank"
-            >
-              <InstagramIcon />
-            </a>
-            <a
-              className="ml-3 text-white hover:text-tiara_red transition-all"
-              href="https://www.facebook.com/fetsanskritiju"
-              target="_blank"
-            >
-              <FiFacebook className="w-8 h-8" />
-            </a>
-            <a
-              className="ml-3 text-white hover:text-tiara_red transition-all"
-              href="mailto:ju.fetsanskriti@gmail.com"
-              target="_blank"
-            >
-              <EmailIcon />
-            </a>
-          </div>
-        </span>
+
+        <div className="flex gap-5">
+          <a
+            href="https://www.instagram.com/fetsu_presents_sanskriti/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-tiara_red transition"
+          >
+            <InstagramIcon />
+          </a>
+          <a
+            href="https://www.facebook.com/fetsanskritiju"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-tiara_red transition"
+          >
+            <FiFacebook className="w-6 h-6" />
+          </a>
+          <a
+            href="mailto:ju.fetsanskriti@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-tiara_red transition"
+          >
+            <EmailIcon />
+          </a>
+        </div>
       </div>
     </footer>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { tiaraFont } from "@/lib/fonts";
+import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
 const sponsors = [
@@ -18,7 +18,7 @@ const SponsorCarousel: React.FC = () => {
   const [elementsDisplayed, setElementsDisplayed] = useState(5);
 
   useEffect(() => {
-    // Responsive display count
+    // Responsive count
     const updateDisplay = () => {
       if (window.innerWidth <= 600) setElementsDisplayed(1);
       else if (window.innerWidth <= 768) setElementsDisplayed(3);
@@ -31,7 +31,7 @@ const SponsorCarousel: React.FC = () => {
     const list = listRef.current;
     if (!list) return;
 
-    // Duplicate for infinite scroll
+    // Duplicate for infinite loop
     const existing = Array.from(list.children);
     existing.forEach((child) => {
       list.appendChild(child.cloneNode(true));
@@ -44,9 +44,10 @@ const SponsorCarousel: React.FC = () => {
     <section className="my-12">
       <h2
         className={cn(
-          "text-center text-2xl sm:text-3xl md:text-4xl text-tiara_red font-bold mb-6",
-          tiaraFont.className
+          "text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-6",
+          orbitronFont.className
         )}
+        style={{ color: "#00bfff" }}
       >
         Previous Year Collaborators
       </h2>
@@ -64,7 +65,7 @@ const SponsorCarousel: React.FC = () => {
           height: "var(--marquee-height)",
         }}
       >
-        {/* Gradient Overlays */}
+        {/* Fading edges */}
         <div
           className="absolute left-0 top-0 h-full z-10 pointer-events-none"
           style={{
@@ -80,7 +81,7 @@ const SponsorCarousel: React.FC = () => {
           }}
         />
 
-        {/* Scrolling List */}
+        {/* Sponsor logos carousel */}
         <ul
           ref={listRef}
           className="flex h-full list-none m-0 p-0"
@@ -105,7 +106,7 @@ const SponsorCarousel: React.FC = () => {
           ))}
         </ul>
 
-        {/* Keyframes */}
+        {/* Keyframes for animation */}
         <style jsx>{`
           @keyframes scrolling {
             0% {
