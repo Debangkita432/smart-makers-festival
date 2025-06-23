@@ -3,20 +3,26 @@
 import Container from "@/components/shared/container";
 import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import PictureGallery from "@/components/ui/picture";
 
 export default function About() {
   return (
-    <Container className="mx-auto">
-      <div className="py-4 mx-6 sm:mx-12 space-y-4 pt-32">
-        <h1
-          id="about"
-          className={cn("text-4xl sm:text-5xl lg:text-6xl text-center text-white", orbitronFont.className)}
-        >
-          Glimpses from Previous Editions
-        </h1>
-      </div>
+    <Container className="mx-auto px-4 sm:px-8">
+      {/* Heading: Responsive, always visible */}
+      <h1
+        id="about"
+        className={cn(
+          "text-xl sm:text-3xl md:text-5xl lg:text-6xl text-white text-center leading-snug break-words pt-20 sm:pt-28 lg:pt-36 mb-4",
+          orbitronFont.className
+        )}
+      >
+        Glimpses from Previous Editions
+      </h1>
 
-      {/* Uncomment below to show maps side-by-side */}
+      {/* Picture Gallery right below heading */}
+      <PictureGallery />
+
+      {/* Optional maps section */}
       {/*
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-8 px-6 sm:px-12">
         <iframe
