@@ -76,7 +76,7 @@ export function Header() {
                   key={idx}
                   href={item.href}
                   className={cn(
-                    "capitalize no-underline hover:no-underline focus:no-underline active:no-underline",
+                    "capitalize no-underline transition-colors duration-300 hover:text-[#4da6ff]",
                     orbitronFont.className
                   )}
                 >

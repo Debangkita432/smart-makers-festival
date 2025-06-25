@@ -4,83 +4,118 @@ import Image from "next/image";
 import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
-// Teacher Coordinator (single card)
-const coordinators = [
-  { name: "Dr. Sudipta Roy", role: "Faculty Head", image: "" },
+const facultyMembers = [
+  { name: "Dr. Sudipta Roy", role: "Faculty Head", image: "/coming.png" },
+  { name: "Prof. Sanchita Paul", role: "Faculty Advisor", image: "/coming.png" },
+  { name: "Prof. Amitava Das", role: "Tech Mentor", image: "/coming.png" },
 ];
 
-// Technical Team (2 rows x 5 = 10 people)
-const teamMembers = Array.from({ length: 10 }).map((_, i) => ({
-  name: `Team Member ${i + 1}`,
-  role: "Technical Team",
-  image: "",
-}));
+const teamMembers = [
+  { name: "Team Member 1", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 2", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 3", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 4", role: "Technical Team", image: "/coming.png" },
+  { name: "Teaadm Member 5", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 6", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 7", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 8", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 9", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 10", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 11", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 12", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 13", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 14", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 15", role: "Technical Team", image: "/coming.png" },
+];
+
+const alumniMembers = [
+  { name: "Alumni 1", role: "Former Member", image: "/coming.png" },
+  { name: "Alumni 2", role: "Former Member", image: "/coming.png" },
+];
 
 export function Team() {
   return (
-    <div className="h-fit">
-      {[
-        {
-          title: "Teacher coordinator",
-          data: coordinators,
-          gridClass: "grid-cols-1",
-        },
-        {
-          title: "Core team",
-          data: teamMembers,
-          gridClass: "grid-cols-2 lg:grid-cols-5",
-        },
-      ].map(({ title, data, gridClass }, sectionIndex) => (
-        <div key={sectionIndex} className="mb-20">
-          {/* Section Heading */}
-          <div className="flex justify-center items-center pt-20 z-50">
-            <div
-              className={cn(
-                "text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center tracking-widest text-white",
-                orbitronFont.className
-              )}
-            >
-              <h1>{title}</h1>
+    <div className="h-fit w-full px-4 sm:px-10">
+      <div className="text-center pt-20">
+        <h1 className={cn("text-3xl sm:text-5xl text-white", orbitronFont.className)}>
+          Faculty Team
+        </h1>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center py-10">
+        {facultyMembers.map((member, i) => (
+          <div key={i} className="relative w-[160px] sm:w-[200px] h-[200px] group">
+            <div className="absolute inset-0 z-20 border border-white transition-transform duration-500 ease-in-out group-hover:-translate-x-6 group-hover:-translate-y-6">
+              <Image
+                src={member.image}
+                alt={member.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="absolute inset-0 z-10 bg-white flex items-end p-3 transition-transform duration-500 ease-in-out group-hover:translate-x-6 group-hover:translate-y-6">
+              <div className="text-center w-full">
+                <h2 className="text-sm font-semibold text-black">{member.name}</h2>
+                <p className="text-blue-800 text-xs">{member.role}</p>
+              </div>
             </div>
           </div>
+        ))}
+      </div>
 
-          {/* Cards Grid */}
-          <div className="w-full flex justify-center px-4 sm:px-10">
-            <div
-              className={cn(
-                "p-6 sm:p-10 grid max-w-[1400px] w-full",
-                "gap-x-4 gap-y-10 place-items-center",
-                gridClass
-              )}
-            >
-              {data.map((person, index) => (
-                <div
-                  key={index}
-                  className="relative w-full max-w-[140px] sm:max-w-[180px] h-[200px] sm:h-[220px] group"
-                >
-                  {/* Front Image */}
-                  <div className="absolute inset-0 z-20 transition-transform duration-500 ease-in-out group-hover:-translate-x-4 group-hover:-translate-y-6">
-                    <Image
-                      src={person.image || "/coming.png"}
-                      alt={person.name}
-                      fill
-                      className="rounded-xl object-cover"
-                    />
-                  </div>
+      <div className="text-center pt-10">
+        <h1 className={cn("text-3xl sm:text-5xl text-white", orbitronFont.className)}>
+          Core Team
+        </h1>
+      </div>
 
-                  {/* Reveal Content */}
-                  <div className="absolute inset-0 z-10 bg-white rounded-xl flex items-end p-3 sm:p-4 transition-transform duration-500 ease-in-out group-hover:translate-x-4 group-hover:translate-y-8">
-                    <div className="text-center w-full">
-                      <h2 className="text-sm font-bold text-black">{person.name}</h2>
-                      <p className="text-[#1c58b3] text-xs">{person.role}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-10 justify-items-center py-10">
+        {teamMembers.map((member, i) => (
+          <div key={i} className="relative w-[160px] sm:w-[200px] h-[200px] group">
+            <div className="absolute inset-0 z-20 border border-white transition-transform duration-500 ease-in-out group-hover:-translate-x-6 group-hover:-translate-y-6">
+              <Image
+                src={member.image}
+                alt={member.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="absolute inset-0 z-10 bg-white flex items-end p-3 transition-transform duration-500 ease-in-out group-hover:translate-x-6 group-hover:translate-y-6">
+              <div className="text-center w-full">
+                <h2 className="text-sm font-semibold text-black">{member.name}</h2>
+                <p className="text-blue-800 text-xs">{member.role}</p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      <div className="text-center pt-10">
+        <h1 className={cn("text-3xl sm:text-5xl text-white", orbitronFont.className)}>
+          Alumni Team
+        </h1>
+      </div>
+
+      <div className="flex flex-col sm:flex-row sm:justify-center sm:gap-12 gap-6 items-center py-10">
+        {alumniMembers.map((member, i) => (
+          <div key={i} className="relative w-[160px] sm:w-[200px] h-[200px] group">
+            <div className="absolute inset-0 z-20 border border-white transition-transform duration-500 ease-in-out group-hover:-translate-x-6 group-hover:-translate-y-6">
+              <Image
+                src={member.image}
+                alt={member.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="absolute inset-0 z-10 bg-white flex items-end p-3 transition-transform duration-500 ease-in-out group-hover:translate-x-6 group-hover:translate-y-6">
+              <div className="text-center w-full">
+                <h2 className="text-sm font-semibold text-black">{member.name}</h2>
+                <p className="text-blue-800 text-xs">{member.role}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
