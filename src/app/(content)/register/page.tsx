@@ -15,7 +15,7 @@ interface EventCard {
   thumbnail: string;
   startTime: string;
   costs: number;
-  category: string; // Add category field for routing
+  category: string;
 }
 
 export default function RegisterPage() {
@@ -23,24 +23,17 @@ export default function RegisterPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // Process all events from categoriesList
     const events: EventCard[] = [];
 
-    // Iterate through categories
     Object.keys(categoriesList).forEach((categoryKey) => {
-      const category =
-        categoriesList[categoryKey as keyof typeof categoriesList];
+      const category = categoriesList[categoryKey as keyof typeof categoriesList];
 
-      // Check if events exist and are in the expected format
-      if (category.events && category.events.length > 0 && category.events[0]) {
+      if ("events" in category && Array.isArray(category.events)) {
         const categoryEvents = category.events[0];
 
-        // Process each event in the category
-        if (typeof categoryEvents === "object") {
-          Object.keys(categoryEvents).forEach((eventKey) => {
-            // @ts-ignore - We're doing runtime type checking
-            const event = categoryEvents[eventKey];
-            if (event && event.name) {
+        if (typeof categoryEvents === "object" && categoryEvents !== null) {
+          Object.entries(categoryEvents).forEach(([eventKey, event]) => {
+            if (typeof event === "object" && event && "name" in event) {
               events.push({
                 id: eventKey,
                 name: event.name,
@@ -48,7 +41,7 @@ export default function RegisterPage() {
                 thumbnail: event.thumbnail || "/images/poster.png",
                 startTime: event.startTime || "",
                 costs: event.costs || 0,
-                category: categoryKey, // Store the category for routing
+                category: categoryKey,
               });
             }
           });
@@ -59,7 +52,6 @@ export default function RegisterPage() {
     setAllEvents(events);
   }, []);
 
-  // Handle click on event card
   const handleEventClick = (event: EventCard) => {
     router.push(`/events/${event.category}/${event.id}`);
   };

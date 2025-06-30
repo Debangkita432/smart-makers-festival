@@ -4,7 +4,7 @@ import { orbitronFont } from "@/lib/fonts";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
-import { useSession } from "next-auth/react";
+
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
@@ -20,7 +20,7 @@ const navItems: NavItem[] = [
 ];
 
 export function Header() {
-  const { data: session } = useSession();
+  
   const [isOpen, setIsOpen] = useState(false);
 
   return (

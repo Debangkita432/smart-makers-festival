@@ -11,14 +11,12 @@ export default function Carousel(): React.JSX.Element {
   const rotationRef = useRef(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Apply transform
   const updateTransform = () => {
     if (carouselRef.current) {
       carouselRef.current.style.transform = `translateZ(-400px) rotateY(${rotationRef.current}deg)`;
     }
   };
 
-  // Auto-rotate every 3s in same direction
   const rotateStep = () => {
     rotationRef.current -= ANGLE;
     updateTransform();
@@ -28,21 +26,18 @@ export default function Carousel(): React.JSX.Element {
   useEffect(() => {
     updateTransform();
     timeoutRef.current = setTimeout(rotateStep, 3000);
-
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
 
-  // Enable drag & scroll gestures
+  // ✅ FIXED GESTURE INIT (no .connect())
   useEffect(() => {
     const cards = document.querySelectorAll(".carousel-touch-area");
     cards.forEach((el) => {
       const element = el as HTMLElement;
-      const pan = new PanInput(element, { inputType: ["touch", "mouse"], scale: [1, 0] });
-      const wheel = new WheelInput(element, { useNormalized: false });
-      pan.connect(element);
-      wheel.connect(element);
+      new PanInput(element, { inputType: ["touch", "mouse"], scale: [1, 0] });
+      new WheelInput(element, { useNormalized: false });
     });
   }, []);
 

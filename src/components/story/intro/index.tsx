@@ -79,7 +79,8 @@ export const LabIntro = () => {
               quizzes, photography and filmmaking contests, food stalls,
               handicrafts, and expert panel discussions. It continues to be a
               platform for showcasing ideas, learning, and collaboration.
-              <strong> "THE ANTICIPATION ENDS HERE!!!" </strong> — the <strong className="text-[#00BFFF]">SMART Maker Festival 2025</strong> is back to empower the creators of
+              <strong>&quot;THE ANTICIPATION ENDS HERE!!!&quot;</strong>
+              — the <strong className="text-[#00BFFF]">SMART Maker Festival 2025</strong> is back to empower the creators of
               tomorrow.
             </p>
           </div>

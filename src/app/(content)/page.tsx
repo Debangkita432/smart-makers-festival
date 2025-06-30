@@ -3,7 +3,7 @@
 import Lenis from "@/components/shared/lenis";
 import { LabIntro } from "@/components/story/intro";
 import { HeroParallax } from "@/components/widgets/Hero";
-import { useSession } from "next-auth/react";
+
 import SponsorCarousel from "@/components/ui/sponsors";
 import MapSection from "@/components/ui/mapsection";
 import { Team } from "@/components/ui/smfteam";
@@ -28,8 +28,8 @@ const images = [
 ];
 
 export default function Home() {
-  const { data: session } = useSession();
-  console.log(session);
+  
+  
 
   return (
     <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col py-0 font-orbitron">
