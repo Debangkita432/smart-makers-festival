@@ -43,7 +43,7 @@ export default function Home() {
         {/* 🧩 Collaborator Carousel */}
         <SponsorCarousel />
 
-        <Team />
+        
 
         {/* 📍 Map Section */}
         <MapSection />

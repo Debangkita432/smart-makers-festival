@@ -68,6 +68,7 @@
     "sass": "^1.77.0",
     "shadcn-ui": "^0.9.4",
     "shortid": "^2.2.8",
+    "swiper": "^11.2.10",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.164.1",

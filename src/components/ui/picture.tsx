@@ -1,26 +1,16 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
 
-const topImages = [
-  "/coming.png",
-  "/coming.png",
-  "/coming.png",
-  "/coming.png",
-  "/coming.png",
-  "/coming.png",
-];
-
-const bottomImages = [
-  "/coming.png",
-  "/coming.png",
-  "/coming.png",
-  "/coming.png",
-  "/coming.png",
-];
+const topImages = Array(15).fill("/coming.png");
 
 const PictureGallery: React.FC = () => {
   const [cardWidth, setCardWidth] = useState(300);
@@ -35,8 +25,8 @@ const PictureGallery: React.FC = () => {
         setCardWidth(300);
         setCardHeight(200);
       } else {
-        setCardWidth(320);
-        setCardHeight(220);
+        setCardWidth(340);
+        setCardHeight(240);
       }
     };
 
@@ -46,121 +36,86 @@ const PictureGallery: React.FC = () => {
   }, []);
 
   const handleImageClick = (src: string) => {
-    const win = window.open(src, "_blank");
-    win?.focus();
+    const modal = document.createElement("div");
+    modal.style.position = "fixed";
+    modal.style.top = "0";
+    modal.style.left = "0";
+    modal.style.width = "100vw";
+    modal.style.height = "100vh";
+    modal.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+    modal.style.display = "flex";
+    modal.style.justifyContent = "center";
+    modal.style.alignItems = "center";
+    modal.style.zIndex = "9999";
+    modal.style.cursor = "zoom-out";
+
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "Magnified Image";
+    img.style.maxWidth = "90%";
+    img.style.maxHeight = "90%";
+    img.style.border = "4px solid white";
+    img.style.borderRadius = "12px";
+
+    modal.appendChild(img);
+    modal.onclick = () => document.body.removeChild(modal);
+    document.body.appendChild(modal);
   };
 
   return (
-    <div className="my-20 overflow-hidden relative w-full space-y-16">
-      {/* Heading */}
-      <div className="w-full flex justify-center items-center pt-10 sm:pt-20">
-        {/* <h2
-          className={cn(
-            "text-3xl sm:text-4xl md:text-5xl text-white text-center leading-snug px-4",
-            orbitronFont.className
-          )}
-        >
-          Glimpses from Previous Editions
-        </h2> */}
-      </div>
-
-      {/* Top Carousel */}
-      <div className="overflow-x-hidden relative">
-        <ul
-          className="flex animate-scrollLeft gap-8"
-          style={{
-            width: "max-content",
-            animationDuration: "80s",
+    <div className="my-24 w-full py-12">
+      {/* Carousel using Swiper */}
+      <div className="px-6">
+        <Swiper
+          modules={[EffectCoverflow, Autoplay, Navigation]}
+          effect="coverflow"
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={"auto"}
+          initialSlide={0}
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
           }}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: false,
+          }}
+          loop={true}
+          navigation={true}
+          className="mySwiper"
         >
-          {[...topImages, ...topImages].map((src, index) => (
-            <li
-              key={`top-${index}`}
+          {topImages.map((src, index) => (
+            <SwiperSlide
+              key={index}
               style={{
-                minWidth: `${cardWidth}px`,
+                width: `${cardWidth}px`,
                 height: `${cardHeight}px`,
               }}
+              className="rounded-xl overflow-hidden shadow-xl border border-white/20 hover:shadow-blue-500/40 cursor-pointer"
+              onClick={() => handleImageClick(src)}
             >
-              <button
-                onClick={() => handleImageClick(src)}
-                className="w-full h-full transition-all duration-500 hover:scale-[1.05] cursor-pointer"
-              >
-                <div className="w-full h-full backdrop-blur-md bg-white/10 border border-white rounded-xl shadow-xl hover:shadow-2xl hover:border-l-[#00bfff] hover:border-r-[#00bfff] hover:border-t-transparent hover:border-b-transparent overflow-hidden">
-                  <Image
-                    src={src}
-                    alt={`Gallery image ${index + 1}`}
-                    width={cardWidth}
-                    height={cardHeight}
-                    className="object-cover w-full h-full rounded-xl opacity-80 hover:opacity-100 transition-opacity duration-300"
-                  />
-                </div>
-              </button>
-            </li>
+              <Image
+                src={src}
+                alt={`Gallery image ${index + 1}`}
+                width={cardWidth}
+                height={cardHeight}
+                className="object-cover w-full h-full rounded-xl hover:opacity-100 transition duration-300"
+              />
+            </SwiperSlide>
           ))}
-        </ul>
+        </Swiper>
       </div>
 
-      {/* Bottom Carousel */}
-      <div className="overflow-x-hidden relative">
-        <ul
-          className="flex animate-scrollRight gap-8"
-          style={{
-            width: "max-content",
-            animationDuration: "80s",
-          }}
-        >
-          {[...bottomImages, ...bottomImages].map((src, index) => (
-            <li
-              key={`bottom-${index}`}
-              style={{
-                minWidth: `${cardWidth}px`,
-                height: `${cardHeight}px`,
-              }}
-            >
-              <button
-                onClick={() => handleImageClick(src)}
-                className="w-full h-full transition-all duration-500 hover:scale-[1.05] cursor-pointer"
-              >
-                <div className="w-full h-full backdrop-blur-md bg-white/10 border border-white rounded-xl shadow-xl hover:shadow-2xl hover:border-l-[#00bfff] hover:border-r-[#00bfff] hover:border-t-transparent hover:border-b-transparent overflow-hidden">
-                  <Image
-                    src={src}
-                    alt={`Gallery image ${index + 1}`}
-                    width={cardWidth}
-                    height={cardHeight}
-                    className="object-cover w-full h-full rounded-xl opacity-80 hover:opacity-100 transition-opacity duration-300"
-                  />
-                </div>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <style jsx>{`
-        @keyframes scrollLeft {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        @keyframes scrollRight {
-          0% {
-            transform: translateX(-50%);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-
-        .animate-scrollLeft {
-          animation: scrollLeft linear infinite;
-        }
-
-        .animate-scrollRight {
-          animation: scrollRight linear infinite;
+      {/* Style override for white arrows */}
+      <style jsx global>{`
+        .swiper-button-next,
+        .swiper-button-prev {
+          color: white !important;
         }
       `}</style>
     </div>

@@ -23,7 +23,7 @@ const Footer = () => {
         {/* General Convenors */}
         <div>
           <h3 className="text-xl font-semibold mb-4 underline underline-offset-4 text-white text-center">
-            General Convenors
+            Technical Team
           </h3>
           <ul className="space-y-2 text-gray-300 text-sm text-center">
             <li>ABC : +91 1000000000</li>
@@ -35,7 +35,7 @@ const Footer = () => {
         {/* Finance Convenors */}
         <div>
           <h3 className="text-xl font-semibold mb-4 underline underline-offset-4 text-white text-center">
-            Finance Convenors
+            Event Heads
           </h3>
           <ul className="space-y-2 text-gray-300 text-sm text-center">
             <li>ABC : +91 1000000000</li>
@@ -46,7 +46,7 @@ const Footer = () => {
         {/* Event Coordinators */}
         <div>
           <h3 className="text-xl font-semibold mb-4 underline underline-offset-4 text-white text-center">
-            Event Coordinators
+            Faculty Head
           </h3>
           <ul className="space-y-2 text-gray-300 text-sm text-center">
             <li>ABC : +91 1000000000</li>
