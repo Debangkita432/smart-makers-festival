@@ -62,15 +62,9 @@ export function Header() {
             </Button>
           </div>
 
-          {/* Navigation + Register: mobile toggle or desktop flex */}
-          <div
-            className={cn(
-              "absolute left-0 top-full mt-4 w-full md:static md:mt-0 md:w-auto",
-              isOpen ? "block" : "hidden",
-              "md:flex md:items-center md:gap-10 md:justify-end"
-            )}
-          >
-            <div className="flex flex-col items-start gap-4 text-xl px-4 md:flex-row md:items-center md:gap-10 md:px-0">
+          {/* Desktop Navigation + Register */}
+          <div className="hidden md:flex md:items-center md:gap-10 md:justify-end">
+            <div className="flex items-center gap-10">
               {navItems.map((item, idx) => (
                 <a
                   key={idx}
@@ -94,13 +88,50 @@ export function Header() {
                   orbitronFont.className
                 )}
               >
-                <Link href="/coming.png" target="_blank">
+                <Link href="/register">
                   Register Now
                 </Link>
               </Button>
             </div>
           </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 mt-4 bg-white/10 backdrop-blur-xl rounded-[20px] p-6 shadow-lg border border-white/20">
+            <div className="flex flex-col gap-6">
+              {navItems.map((item, idx) => (
+                <a
+                  key={idx}
+                  href={item.href}
+                  className={cn(
+                    "capitalize no-underline transition-colors duration-300 hover:text-[#4da6ff] text-lg",
+                    orbitronFont.className
+                  )}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+
+              {/* Mobile CTA Button */}
+              <Button
+                asChild
+                className={cn(
+                  "px-8 py-4 text-base font-semibold rounded-[1rem] w-full",
+                  "bg-[#001f4d] text-white hover:bg-[#000d26]",
+                  "shadow-[0_0_15px_4px_rgba(255,255,255,0.25)] hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.4)]",
+                  orbitronFont.className
+                )}
+                onClick={() => setIsOpen(false)}
+              >
+                <Link href="/register">
+                  Register Now
+                </Link>
+              </Button>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   );
