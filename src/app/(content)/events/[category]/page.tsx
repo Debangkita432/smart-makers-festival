@@ -6,6 +6,7 @@ import Image from "next/image";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { tiaraFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import { FiArrowRight } from "react-icons/fi";
 
 function toTitleCase(str: string) {
   return str
@@ -52,11 +53,11 @@ export default function EventsPage() {
               return card.id !== "15" && card.id !== "14" ? (
                 <div
                   onClick={() => router.push(`${pathname}/${card.id}`)}
-                  className="cursor-pointer"
+                  className="cursor-pointer group"
                 >
                   <CardContainer
                     key={index}
-                    containerClassName="relative flex items-center justify-center transition-all duration-200 ease-linear"
+                    containerClassName="relative flex items-center justify-center transition-all duration-200 ease-linear group-hover:animate-wavy"
                   >
                     <CardBody className="relative">
                       <CardItem translateZ="100" className="w-full mt-4">
@@ -70,6 +71,11 @@ export default function EventsPage() {
                           unoptimized={typeof card.thumbnail === "string"}
                           sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 33vw"
                         />
+                        <span className="absolute top-3 right-3 z-10">
+                          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/70 shadow-lg transition hover:bg-blue-500/80">
+                            <FiArrowRight className="text-white text-2xl" />
+                          </span>
+                        </span>
                       </CardItem>
                     </CardBody>
                   </CardContainer>
@@ -103,6 +109,20 @@ export default function EventsPage() {
             })}
         </div>
       </div>
+      {/* Wavy hover effect keyframes */}
+      <style jsx global>{`
+        @keyframes wavy {
+          0% { transform: rotateY(0deg) scale(1) skewY(0deg); }
+          20% { transform: rotateY(0.7deg) scale(1.01) skewY(0.7deg); }
+          40% { transform: rotateY(-0.7deg) scale(1.005) skewY(-0.7deg); }
+          60% { transform: rotateY(0.7deg) scale(1.012) skewY(0.7deg); }
+          80% { transform: rotateY(-0.7deg) scale(1.008) skewY(-0.7deg); }
+          100% { transform: rotateY(0deg) scale(1) skewY(0deg); }
+        }
+        .animate-wavy {
+          animation: wavy 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      `}</style>
     </div>
   );
 }

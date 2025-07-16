@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { PanInput, WheelInput } from "@egjs/react-axes";
 import { orbitronFont } from "@/lib/fonts";
 
@@ -17,11 +17,11 @@ export default function Carousel(): React.JSX.Element {
     }
   };
 
-  const rotateStep = () => {
+  const rotateStep = useCallback(() => {
     rotationRef.current -= ANGLE;
     updateTransform();
     timeoutRef.current = setTimeout(rotateStep, 3000);
-  };
+  }, []);
 
   useEffect(() => {
     updateTransform();
@@ -29,7 +29,7 @@ export default function Carousel(): React.JSX.Element {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
-  }, []);
+  }, [rotateStep]);
 
   // ✅ FIXED GESTURE INIT (no .connect())
   useEffect(() => {

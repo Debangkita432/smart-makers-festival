@@ -1,99 +1,49 @@
 "use client";
-import { useEffect, useState } from "react";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import { tiaraFont } from "@/lib/fonts";
+import { useRouter } from "next/navigation";
+import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { categoriesList } from "@/data/categoryList";
 
-// Type definition for events
-interface EventCard {
-  id: string;
-  name: string;
-  description: string;
-  thumbnail: string;
-  startTime: string;
-  costs: number;
-  category: string;
-}
-
-export default function RegisterPage() {
-  const [allEvents, setAllEvents] = useState<EventCard[]>([]);
+export default function ComingSoon() {
   const router = useRouter();
-
-  useEffect(() => {
-    const events: EventCard[] = [];
-
-    Object.keys(categoriesList).forEach((categoryKey) => {
-      const category = categoriesList[categoryKey as keyof typeof categoriesList];
-
-      if ("events" in category && Array.isArray(category.events)) {
-        const categoryEvents = category.events[0];
-
-        if (typeof categoryEvents === "object" && categoryEvents !== null) {
-          Object.entries(categoryEvents).forEach(([eventKey, event]) => {
-            if (typeof event === "object" && event && "name" in event) {
-              events.push({
-                id: eventKey,
-                name: event.name,
-                description: event.description || "",
-                thumbnail: event.thumbnail || "/images/poster.png",
-                startTime: event.startTime || "",
-                costs: event.costs || 0,
-                category: categoryKey,
-              });
-            }
-          });
-        }
-      }
-    });
-
-    setAllEvents(events);
-  }, []);
-
-  const handleEventClick = (event: EventCard) => {
-    router.push(`/events/${event.category}/${event.id}`);
-  };
-
   return (
-    <div className="h-fit">
-      <div className="flex justify-center items-center pt-32 z-50">
-        <div
-          className={cn(
-            "text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl w-fit text-center duration-500",
-            tiaraFont.className
-          )}
-        >
-          Event Registration
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-black via-blue-950 to-blue-900 text-white relative overflow-hidden">
+      {/* Spacey background elements */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-0 left-0 w-full h-full opacity-30">
+          <Image src="/coming.png" alt="Coming Soon" fill className="object-cover" priority />
         </div>
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent" />
       </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {allEvents.map((event, index) => (
-            <div
-              key={index}
-              className="cursor-pointer"
-              onClick={() => handleEventClick(event)}
-            >
-              <CardContainer containerClassName="relative flex items-center justify-center transition-all duration-200 ease-linear">
-                <CardBody className="relative">
-                  <CardItem translateZ="100" className="w-full mt-4">
-                    <Image
-                      src={event.thumbnail}
-                      className="rounded-xl"
-                      alt={event.name}
-                      width={400}
-                      height={300}
-                      priority
-                      unoptimized={typeof event.thumbnail === "string"}
-                    />
-                  </CardItem>
-                </CardBody>
-              </CardContainer>
-            </div>
-          ))}
-        </div>
+      <div className="z-10 flex flex-col items-center justify-center px-6 py-12">
+        <h1 className={cn("text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg text-center tracking-widest", orbitronFont.className)}>
+          COMING SOON
+        </h1>
+        <p className="text-lg md:text-2xl mb-10 text-center max-w-xl text-blue-200">
+          The registration portal for Smart Maker Festival 2025 will open soon.<br />Stay tuned for updates!
+        </p>
+        <button
+          onClick={() => router.push("/")}
+          className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-400 text-white font-semibold text-lg shadow-lg transition-all duration-200"
+        >
+          Back to Home
+        </button>
+      </div>
+      {/* Some floating stars or sparkles for space effect */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {[...Array(30)].map((_, i) => (
+          <span
+            key={i}
+            className="absolute bg-white rounded-full opacity-70 animate-pulse"
+            style={{
+              width: `${Math.random() * 2 + 1}px`,
+              height: `${Math.random() * 2 + 1}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDuration: `${Math.random() * 2 + 1}s`,
+            }}
+          />
+        ))}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const sponsors = [
   "/coming.png",
@@ -97,10 +98,13 @@ const SponsorCarousel: React.FC = () => {
                 width: "var(--marquee-element-width)",
               }}
             >
-              <img
+              <Image
                 src={logo}
                 alt={`Sponsor ${index + 1}`}
+                width={180}
+                height={80}
                 className="object-contain w-full h-full max-h-[180px]"
+                priority={index < elementsDisplayed}
               />
             </li>
           ))}
