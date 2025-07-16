@@ -52,7 +52,7 @@ export default function Carousel(): React.JSX.Element {
   };
 
   const images = Array.from({ length: COUNT }).map((_, i) => ({
-    src: "/COMING.png",
+    src: "/coming.png",
   }));
 
   return (

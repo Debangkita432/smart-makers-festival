@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Smart Maker Festival 2025",
   description: "Smart Maker Festival 2025",
   icons: {
-    icon: "/COMING.png",
+    icon: "/coming.png",
   },
 };
 

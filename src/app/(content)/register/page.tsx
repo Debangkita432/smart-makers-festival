@@ -11,7 +11,7 @@ export default function ComingSoon() {
       {/* Spacey background elements */}
       <div className="absolute inset-0 pointer-events-none z-0">
         <div className="absolute top-0 left-0 w-full h-full opacity-30">
-          <Image src="/COMING.png" alt="Coming Soon" fill className="object-cover" priority />
+          <Image src="/coming.png" alt="Coming Soon" fill className="object-cover" priority />
         </div>
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent" />
       </div>
