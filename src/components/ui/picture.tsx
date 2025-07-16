@@ -10,11 +10,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 
-const topImages = [
-  "/2.png", "/3.png", "/4.png", "/5.png", "/6.png",
-  "/7.png", "/8.png", "/9.png", "/10.png", "/11.png",
-  "/12.png", "/13.png", "/14.png", "/15.png", "/aryabhatta.png"
-];
+const topImages = Array(15).fill("/COMING.png");
 
 const PictureGallery: React.FC = () => {
   const [cardWidth, setCardWidth] = useState(300);

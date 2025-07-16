@@ -5,32 +5,32 @@ import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 
 const facultyMembers = [
-  { name: "Dr. Sudipta Roy", role: "Faculty Head", image: "/coming.png" },
-  { name: "Prof. Sanchita Paul", role: "Faculty Advisor", image: "/coming.png" },
-  { name: "Prof. Amitava Das", role: "Tech Mentor", image: "/coming.png" },
+  { name: "Dr. Sudipta Roy", role: "Faculty Head", image: "/COMING.png" },
+  { name: "Prof. Sanchita Paul", role: "Faculty Advisor", image: "/COMING.png" },
+  { name: "Prof. Amitava Das", role: "Tech Mentor", image: "/COMING.png" },
 ];
 
 const teamMembers = [
-  { name: "Team Member 1", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 2", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 3", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 4", role: "Technical Team", image: "/coming.png" },
-  { name: "Teaadm Member 5", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 6", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 7", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 8", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 9", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 10", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 11", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 12", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 13", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 14", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 15", role: "Technical Team", image: "/coming.png" },
+  { name: "Team Member 1", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 2", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 3", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 4", role: "Technical Team", image: "/COMING.png" },
+  { name: "Teaadm Member 5", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 6", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 7", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 8", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 9", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 10", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 11", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 12", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 13", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 14", role: "Technical Team", image: "/COMING.png" },
+  { name: "Team Member 15", role: "Technical Team", image: "/COMING.png" },
 ];
 
 const alumniMembers = [
-  { name: "Alumni 1", role: "Former Member", image: "/coming.png" },
-  { name: "Alumni 2", role: "Former Member", image: "/coming.png" },
+  { name: "Alumni 1", role: "Former Member", image: "/COMING.png" },
+  { name: "Alumni 2", role: "Former Member", image: "/COMING.png" },
 ];
 
 export function Team() {

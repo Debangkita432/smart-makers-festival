@@ -48,7 +48,7 @@ export const LabIntro = () => {
         <div className="flex flex-col lg:flex-row items-center justify-center gap-10 mt-16 mb-12 px-6">
           <div className="flex justify-center w-full lg:w-1/2">
             <Image
-              src="/coming.png"
+              src="/COMING.png"
               alt="Smart Maker Festival 2025 Logo"
               width={500}
               height={500}
