@@ -49,8 +49,8 @@ export default function Home() {
               className={
                 cn(
                   "px-8 py-3 text-base font-semibold rounded-[1rem] w-32",
-                  "bg-transparent text-white border-2 border-[#00bfff] hover:bg-[#00bfff]/20 hover:border-[#4da6ff]",
-                  "shadow-[0_0_10px_2px_rgba(0,191,255,0.3)] hover:shadow-[0_0_20px_4px_rgba(0,191,255,0.6)]",
+                  "bg-transparent text-white border-2 border-[#001f4d] hover:bg-[#001f4d]/20 hover:border-[#000d26]",
+                  "shadow-[0_0_10px_2px_rgba(0,31,77,0.3)] hover:shadow-[0_0_20px_4px_rgba(0,31,77,0.6)]",
                   "transition-all duration-300 hover:scale-105",
                   orbitronFont.className
                 )
