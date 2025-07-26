@@ -7,6 +7,10 @@ import { HeroParallax } from "@/components/widgets/Hero";
 import SponsorCarousel from "@/components/ui/sponsors";
 import MapSection from "@/components/ui/mapsection";
 import { Team } from "@/components/ui/smfteam";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { orbitronFont } from "@/lib/fonts";
 
 const images = [
   { alt: "", src: "/Aryabhatta.png" },
@@ -36,6 +40,40 @@ export default function Home() {
       <Lenis>
         <HeroParallax images={images} />
         <LabIntro />
+
+        {/* Register Now button for mobile and tablet only */}
+        <div className="flex justify-center mt-8 mb-4 md:hidden">
+          <div className="flex gap-4">
+            <Button
+              asChild
+              className={
+                cn(
+                  "px-8 py-3 text-base font-semibold rounded-[1rem] w-32",
+                  "bg-transparent text-white border-2 border-[#00bfff] hover:bg-[#00bfff]/20 hover:border-[#4da6ff]",
+                  "shadow-[0_0_10px_2px_rgba(0,191,255,0.3)] hover:shadow-[0_0_20px_4px_rgba(0,191,255,0.6)]",
+                  "transition-all duration-300 hover:scale-105",
+                  orbitronFont.className
+                )
+              }
+            >
+              <Link href="/events">Events</Link>
+            </Button>
+            <Button
+              asChild
+              className={
+                cn(
+                  "px-8 py-3 text-sm font-semibold rounded-[1rem] border-2 border-transparent w-32",
+                  "bg-[#001f4d] text-white hover:bg-[#000d26] hover:border-[#4da6ff]",
+                  "shadow-[0_0_10px_2px_rgba(255,255,255,0.3)] hover:shadow-[0_0_20px_4px_rgba(255,255,255,0.6)]",
+                  "transition-all duration-300 hover:scale-105",
+                  orbitronFont.className
+                )
+              }
+            >
+              <Link href="/register">Register Now</Link>
+            </Button>
+          </div>
+        </div>
 
         {/* 🧩 Spacer to avoid overlap */}
         <div className="mt-10 sm:mt-20" />

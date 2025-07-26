@@ -12,7 +12,7 @@ export default function About() {
       <h1
         id="about"
         className={cn(
-          "text-xl sm:text-3xl md:text-5xl lg:text-6xl text-white text-center leading-snug break-words pt-20 sm:pt-28 lg:pt-36 mb-4",
+          "text-xl sm:text-3xl md:text-5xl lg:text-6xl text-white text-center leading-snug break-words pt-24 sm:pt-28 lg:pt-36 mb-8",
           orbitronFont.className
         )}
       >

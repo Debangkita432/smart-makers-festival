@@ -10,7 +10,17 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 
-const topImages = Array(15).fill("/coming.png");
+const topImages = [
+  "/picture1.jpeg",
+  "/picture2.jpeg",
+  "/picture3.jpeg",
+  "/picture4.jpeg",
+  "/picture5.jpeg",
+  "/picture6.jpeg",
+  "/picture7.jpeg",
+  "/picture8.jpeg",
+  "/picture9.jpeg",
+];
 
 const PictureGallery: React.FC = () => {
   const [cardWidth, setCardWidth] = useState(300);
@@ -19,17 +29,17 @@ const PictureGallery: React.FC = () => {
   useEffect(() => {
     const updateCardSize = () => {
       if (window.innerWidth < 400) {
-        setCardWidth(200);
-        setCardHeight(120);
+        setCardWidth(280);
+        setCardHeight(180);
       } else if (window.innerWidth < 640) {
-        setCardWidth(260);
-        setCardHeight(160);
-      } else if (window.innerWidth < 1024) {
-        setCardWidth(300);
-        setCardHeight(200);
-      } else {
         setCardWidth(340);
-        setCardHeight(240);
+        setCardHeight(210);
+      } else if (window.innerWidth < 1024) {
+        setCardWidth(340);
+        setCardHeight(220);
+      } else {
+        setCardWidth(380);
+        setCardHeight(260);
       }
     };
 
@@ -66,7 +76,7 @@ const PictureGallery: React.FC = () => {
   };
 
   return (
-    <div className="my-24 w-full py-12">
+    <div className="mt-12 sm:mt-16 lg:mt-24 mb-0 w-full pt-6 sm:pt-8 lg:pt-12 pb-0">
       {/* Carousel using Swiper */}
       <div className="px-2 sm:px-6 max-w-full" style={{ maxWidth: "100vw" }}>
         <Swiper
@@ -90,8 +100,8 @@ const PictureGallery: React.FC = () => {
           }}
           loop={true}
           navigation={true}
-          className="mySwiper w-full"
-          style={{ width: "100%", maxWidth: "100vw" }}
+          className="mySwiper w-full !mb-0 !pb-0"
+          style={{ width: "100%", maxWidth: "100vw", marginBottom: 0, paddingBottom: 0 }}
           key={`swiper-${cardWidth}-${cardHeight}`}
           onSwiper={(swiper) => { console.log('Swiper initialized:', swiper); }}
         >
@@ -103,17 +113,33 @@ const PictureGallery: React.FC = () => {
                 height: `${cardHeight}px`,
                 maxWidth: "90vw",
                 maxHeight: "60vw",
+                marginBottom: 0,
+                paddingBottom: 0,
               }}
-              className="rounded-xl overflow-hidden shadow-xl border border-white/20 hover:shadow-blue-500/40 cursor-pointer bg-black/60"
+              className="rounded-xl overflow-hidden shadow-xl border border-white/20 hover:shadow-blue-500/40 cursor-pointer bg-black/60 !mb-0 !pb-0"
               onClick={() => handleImageClick(src)}
             >
+              {/* Blue Glow Behind Card */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  zIndex: 0,
+                  borderRadius: '0.75rem',
+                  boxShadow: '0 0 16px 4px #00bfff66, 0 0 32px 8px #4da6ff33',
+                  pointerEvents: 'none',
+                }}
+              />
               <Image
                 src={src}
                 alt={`Gallery image ${index + 1}`}
                 width={cardWidth}
                 height={cardHeight}
                 className="object-cover w-full h-full rounded-xl hover:opacity-100 transition duration-300"
-                style={{ maxWidth: "100%", maxHeight: "100%" }}
+                style={{ maxWidth: "100%", maxHeight: "100%", objectPosition: "center 20%" }}
               />
             </SwiperSlide>
           ))}
@@ -122,6 +148,10 @@ const PictureGallery: React.FC = () => {
 
       {/* Style override for white arrows */}
       <style jsx global>{`
+        .swiper-wrapper, .swiper-slide {
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+        }
         .swiper-button-next,
         .swiper-button-prev {
           color: white !important;

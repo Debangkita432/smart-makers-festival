@@ -2,25 +2,65 @@
 import { useRouter } from "next/navigation";
 import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Points, PointMaterial } from "@react-three/drei";
+import * as random from "maath/random";
+import { Suspense, useRef, useState } from "react";
+
+function StarField(props: any) {
+  const ref = useRef<any>();
+  const [sphere] = useState(() => random.inSphere(new Float32Array(5000), { radius: 1.5 }));
+
+  useFrame((state, delta) => {
+    if (ref.current) {
+      ref.current.rotation.x -= delta / 10;
+      ref.current.rotation.y -= delta / 15;
+    }
+  });
+
+  return (
+    <group rotation={[0, 0, Math.PI / 4]}>
+      <Points
+        ref={ref}
+        positions={sphere}
+        stride={3}
+        frustumCulled={false}
+        {...props}
+      >
+        <PointMaterial
+          transparent
+          color="#00bfff"
+          size={0.002}
+          sizeAttenuation={true}
+          depthWrite={false}
+        />
+      </Points>
+    </group>
+  );
+}
 
 export default function ComingSoon() {
   const router = useRouter();
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-black via-blue-950 to-blue-900 text-white relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-black via-gray-900 to-black text-white relative overflow-hidden">
       {/* Spacey background elements */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-30">
-          <Image src="/coming.png" alt="Coming Soon" fill className="object-cover" priority />
-        </div>
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent" />
+      </div>
+      {/* Three.js Star Field */}
+      <div className="absolute inset-0">
+        <Canvas camera={{ position: [0, 0, 1] }}>
+          <Suspense fallback={null}>
+            <StarField />
+          </Suspense>
+        </Canvas>
       </div>
       <div className="z-10 flex flex-col items-center justify-center px-6 py-12">
         <h1 className={cn("text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg text-center tracking-widest", orbitronFont.className)}>
           COMING SOON
         </h1>
         <p className="text-lg md:text-2xl mb-10 text-center max-w-xl text-blue-200">
-          The registration portal for Smart Maker Festival 2025 will open soon.<br />Stay tuned for updates!
+         Stay tuned for updates!
         </p>
         <button
           onClick={() => router.push("/")}
@@ -28,22 +68,6 @@ export default function ComingSoon() {
         >
           Back to Home
         </button>
-      </div>
-      {/* Some floating stars or sparkles for space effect */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        {[...Array(30)].map((_, i) => (
-          <span
-            key={i}
-            className="absolute bg-white rounded-full opacity-70 animate-pulse"
-            style={{
-              width: `${Math.random() * 2 + 1}px`,
-              height: `${Math.random() * 2 + 1}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDuration: `${Math.random() * 2 + 1}s`,
-            }}
-          />
-        ))}
       </div>
     </div>
   );

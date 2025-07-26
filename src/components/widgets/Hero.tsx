@@ -107,7 +107,7 @@ export const HeroParallax = ({
       </motion.div>
 
       {/* Add Large Bottom Spacer */}
-      <div className="h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh]" />
+      <div className="h-[8vh] sm:h-[15vh] md:h-[30vh] lg:h-[40vh]" />
     </div>
   );
 };

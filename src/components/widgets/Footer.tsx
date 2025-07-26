@@ -7,11 +7,11 @@ import { FiFacebook } from "react-icons/fi";
 
 const Footer = () => {
   return (
-    <footer className="w-full text-white px-6 md:px-12 pt-16 pb-10 bg-transparent">
+    <footer className="w-full text-white px-6 md:px-12 pt-2 md:pt-6 lg:pt-8 pb-6 md:pb-10 bg-transparent">
       {/* Title */}
       <h2
         className={cn(
-          "text-4xl sm:text-5xl text-center mb-14 tracking-wider",
+          "text-4xl sm:text-5xl text-center mb-4 sm:mb-6 lg:mb-14 tracking-wider",
           orbitronFont.className
         )}
       >
@@ -19,7 +19,7 @@ const Footer = () => {
       </h2>
 
       {/* Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left mb-12 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 lg:gap-12 text-center md:text-left mb-4 md:mb-8 lg:mb-12 max-w-6xl mx-auto">
         {/* General Convenors */}
         <div>
           <h3 className="text-xl font-semibold mb-4 underline underline-offset-4 text-white text-center">
@@ -63,7 +63,7 @@ const Footer = () => {
 
         <div className="flex gap-5">
           <a
-            href="https://www.instagram.com/fetsu_presents_sanskriti/"
+            // href="https://www.instagram.com/fetsu_presents_sanskriti/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-tiara_red transition"
@@ -71,7 +71,7 @@ const Footer = () => {
             <InstagramIcon />
           </a>
           <a
-            href="https://www.facebook.com/fetsanskritiju"
+            href="https://www.facebook.com/smartmakerfestival"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-tiara_red transition"
@@ -79,7 +79,7 @@ const Footer = () => {
             <FiFacebook className="w-6 h-6" />
           </a>
           <a
-            href="mailto:ju.fetsanskriti@gmail.com"
+            // href="mailto:ju.fetsanskriti@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-tiara_red transition"
