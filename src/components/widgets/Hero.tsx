@@ -13,18 +13,27 @@ import { LampContainer } from "@/components/ui/lamp";
 import { cn } from "@/lib/utils";
 import { orbitronFont } from "@/lib/fonts";
 
+// Define type for images
+type ImageType = {
+  src: string;
+  alt: string;
+};
+
+// Utility: Split array into chunks
+const chunkArray = (arr: ImageType[], size: number): ImageType[][] =>
+  arr.reduce(
+    (acc: ImageType[][], _, i) =>
+      i % size ? acc : [...acc, arr.slice(i, i + size)],
+    []
+  );
+
 export const HeroParallax = ({
   images,
 }: {
-  images: {
-    src: string;
-    alt: string;
-  }[];
+  images: ImageType[];
 }) => {
-  const firstRow = images.slice(0, 5);
-  const secondRow = images.slice(5, 10);
-  const thirdRow = images.slice(10, 15);
-  const ref = React.useRef(null);
+  const rows = chunkArray(images, 5); // dynamically split images into rows of 5
+  const ref = React.useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
@@ -45,11 +54,19 @@ export const HeroParallax = ({
   const springConfig = { stiffness: 200, damping: 30, bounce: 0 };
 
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [isMobile ? -300 : -900, isMobile ? 300 : 900]),
+    useTransform(
+      scrollYProgress,
+      [0, 1],
+      [isMobile ? -300 : -900, isMobile ? 300 : 900]
+    ),
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [isMobile ? -300 : -900, isMobile ? -500 : -1200]),
+    useTransform(
+      scrollYProgress,
+      [0, 1],
+      [isMobile ? -300 : -900, isMobile ? -500 : -1200]
+    ),
     springConfig
   );
   const rotateX = useSpring(
@@ -65,7 +82,11 @@ export const HeroParallax = ({
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [isMobile ? -220 : -600, isMobile ? 180 : 400]),
+    useTransform(
+      scrollYProgress,
+      [0, 0.2],
+      [isMobile ? -220 : -600, isMobile ? 180 : 400]
+    ),
     springConfig
   );
 
@@ -83,31 +104,23 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
+        className="flex flex-col gap-10 px-4 sm:px-8 md:px-16"
       >
-        {/* Row 1 */}
-        <motion.div className="flex flex-row space-x-4 sm:space-x-10 md:space-x-20 mb-10 px-4 sm:px-8 md:px-16 overflow-visible w-full">
-          {firstRow.map((image, index) => (
-            <ImageCard image={image} translate={translateX} key={index} />
-          ))}
-        </motion.div>
-
-        {/* Row 2 */}
-        <motion.div className="flex flex-row space-x-4 sm:space-x-10 md:space-x-20 mb-10 px-4 sm:px-8 md:px-16 overflow-visible w-full">
-          {secondRow.map((image, index) => (
-            <ImageCard image={image} translate={translateXReverse} key={index} />
-          ))}
-        </motion.div>
-
-        {/* Row 3 */}
-        <motion.div className="flex flex-row space-x-4 sm:space-x-10 md:space-x-20 px-4 sm:px-8 md:px-16 overflow-visible w-full">
-          {thirdRow.map((image, index) => (
-            <ImageCard image={image} translate={translateX} key={index} />
-          ))}
-        </motion.div>
+        {rows.map((row: ImageType[], rowIndex: number) => (
+          <motion.div
+            key={rowIndex}
+            className="flex flex-row space-x-4 sm:space-x-10 md:space-x-20"
+          >
+            {row.map((image: ImageType, index: number) => (
+              <ImageCard
+                image={image}
+                translate={rowIndex % 2 === 0 ? translateX : translateXReverse}
+                key={index}
+              />
+            ))}
+          </motion.div>
+        ))}
       </motion.div>
-
-      {/* Add Large Bottom Spacer */}
-      <div className="h-[8vh] sm:h-[15vh] md:h-[30vh] lg:h-[40vh]" />
     </div>
   );
 };
@@ -151,16 +164,14 @@ export const ImageCard = ({
   image,
   translate,
 }: {
-  image: {
-    src: string;
-    alt: string;
-  };
+  image: ImageType;
   translate: MotionValue<number>;
 }) => {
   return (
     <motion.div
       style={{ x: translate }}
-      whileHover={{ y: -20 }}
+      whileHover={{ scale: 1.05, y: -10 }} // hover zoom
+      transition={{ type: "spring", stiffness: 200, damping: 20 }}
       className="w-[12rem] sm:w-[18rem] md:w-[22rem] flex-shrink-0 origin-left"
     >
       <div className="w-full aspect-square relative rounded-lg overflow-hidden shadow-md">
@@ -168,8 +179,7 @@ export const ImageCard = ({
           src={image.src}
           alt={image.alt}
           fill
-          unoptimized={image.src.includes("githubusercontent.com")}
-          className="object-cover object-center rounded-lg"
+          className="object-cover object-center"
         />
       </div>
     </motion.div>

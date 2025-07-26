@@ -36,7 +36,9 @@ const Lenis = ({ children }: { children: React.ReactNode }) => {
         },
       }}
     >
-      {children}
+      <div className="py-8 sm:py-12 lg:py-16">
+        {children}
+      </div>
     </ReactLenis>
   );
 };

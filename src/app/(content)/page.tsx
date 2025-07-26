@@ -36,7 +36,7 @@ export default function Home() {
   
 
   return (
-    <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col py-0 font-orbitron">
+    <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col py-0 pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 font-orbitron">
       <Lenis>
         <HeroParallax images={images} />
         <LabIntro />
