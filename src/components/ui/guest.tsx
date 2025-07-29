@@ -11,27 +11,26 @@ export default function Carousel(): React.JSX.Element {
   const rotationRef = useRef(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const updateTransform = () => {
+  const updateTransform = (distance = 400) => {
     if (carouselRef.current) {
-      carouselRef.current.style.transform = `translateZ(-400px) rotateY(${rotationRef.current}deg)`;
+      carouselRef.current.style.transform = `translateZ(-${distance}px) rotateY(${rotationRef.current}deg)`;
     }
   };
 
   const rotateStep = useCallback(() => {
     rotationRef.current -= ANGLE;
-    updateTransform();
+    updateTransform(window.innerWidth < 640 ? 250 : 400); // adjust based on screen size
     timeoutRef.current = setTimeout(rotateStep, 3000);
   }, []);
 
   useEffect(() => {
-    updateTransform();
+    updateTransform(window.innerWidth < 640 ? 250 : 400);
     timeoutRef.current = setTimeout(rotateStep, 3000);
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [rotateStep]);
 
-  // ✅ FIXED GESTURE INIT (no .connect())
   useEffect(() => {
     const cards = document.querySelectorAll(".carousel-touch-area");
     cards.forEach((el) => {
@@ -43,12 +42,12 @@ export default function Carousel(): React.JSX.Element {
 
   const rotateLeft = () => {
     rotationRef.current += ANGLE;
-    updateTransform();
+    updateTransform(window.innerWidth < 640 ? 250 : 400);
   };
 
   const rotateRight = () => {
     rotationRef.current -= ANGLE;
-    updateTransform();
+    updateTransform(window.innerWidth < 640 ? 250 : 400);
   };
 
   const images = Array.from({ length: COUNT }).map((_, i) => ({
@@ -138,8 +137,6 @@ export default function Carousel(): React.JSX.Element {
           height: 100%;
           background-size: cover;
           background-position: center;
-          position: relative;
-          overflow: hidden;
           border-radius: 16px;
           backdrop-filter: blur(12px);
           background-color: rgba(255, 255, 255, 0.05);
@@ -172,6 +169,19 @@ export default function Carousel(): React.JSX.Element {
 
         .nav-buttons button:hover {
           background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* 🔹 Mobile adjustments: shrink whole carousel */
+        @media (max-width: 640px) {
+          #carouselWrapper {
+            height: 350px;
+            perspective: 900px;
+          }
+          figure {
+            width: 180px;
+            height: 180px;
+            margin: -90px 0 0 -90px;
+          }
         }
       `}</style>
     </div>

@@ -8,19 +8,21 @@ import PictureGallery from "@/components/ui/picture";
 export default function About() {
   return (
     <Container className="mx-auto px-4 sm:px-8">
-      {/* Heading: Responsive, always visible */}
+      {/* Heading */}
       <h1
         id="about"
         className={cn(
-          "text-xl sm:text-3xl md:text-5xl lg:text-6xl text-white text-center leading-snug break-words pt-24 sm:pt-28 lg:pt-36 mb-8",
+          "text-xl sm:text-3xl md:text-5xl lg:text-6xl text-white text-center leading-snug break-words pt-32 sm:pt-28 lg:pt-36 mb-8",
           orbitronFont.className
         )}
       >
         Glimpses from Previous Editions
       </h1>
 
-      {/* Picture Gallery right below heading */}
-      <PictureGallery />
+      {/* Picture Gallery with unified bottom spacing */}
+      <div className="mb-4 sm:mb-12">
+        <PictureGallery />
+      </div>
 
       {/* Optional maps section */}
       {/*

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation"; // Add useRouter import
+import { usePathname, useRouter } from "next/navigation";
 import { CardType } from "@/components/ui/hover/scroll";
 import Image from "next/image";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
@@ -19,51 +19,55 @@ function toTitleCase(str: string) {
 export default function EventsPage() {
   const [cards, setCards] = useState<CardType[]>([]);
   const pathname = usePathname();
-  const router = useRouter(); // Add router for navigation
+  const router = useRouter();
 
   useEffect(() => {
     const path = pathname.split("/")[2];
     fetch(`/api/events/${path}`)
       .then((response) => response.json())
-      .then((dataList) => {
-        setCards(dataList);
-      })
+      .then((dataList) => setCards(dataList))
       .catch((error) => console.error("Error fetching events:", error));
   }, [pathname]);
+
   return (
-    <div className="h-fit">
-      <div className="-ml-5 flex justify-center items-center pt-32 z-50">
+    <div className="h-fit pb-4 sm:pb-12">
+      {/* Page Heading */}
+      <div className="flex justify-center items-center pt-28 px-4 sm:px-0 z-50">
         <div
           className={cn(
-            "text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl w-fit text-center duration-500",
+            "text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl w-fit text-center duration-500",
             tiaraFont.className
           )}
         >
           {toTitleCase(pathname.split("/")[2])} Events
         </div>
       </div>
-      <div className="w-full flex justify-center ">
-        <div className="p-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+
+      {/* Events Grid */}
+      <div className="w-full flex justify-center">
+        <div className="p-6 sm:p-10 md:p-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-16 max-w-[1400px] w-full">
           {cards
             .sort((a, b) => a.name.localeCompare(b.name))
             .map((card, index) => {
-              if (card.id === "50") {
-                return null;
-              }
-              return card.id !== "15" && card.id !== "14" ? (
+              if (card.id === "50") return null;
+              const isSpecial = card.id === "15" || card.id === "14";
+              return (
                 <div
+                  key={index}
                   onClick={() => router.push(`${pathname}/${card.id}`)}
                   className="cursor-pointer group"
                 >
                   <CardContainer
-                    key={index}
-                    containerClassName="relative flex items-center justify-center transition-all duration-200 ease-linear group-hover:animate-wavy"
+                    containerClassName={cn(
+                      "relative flex items-center justify-center transition-all duration-200 ease-linear",
+                      !isSpecial && "group-hover:animate-wavy"
+                    )}
                   >
                     <CardBody className="relative">
-                      <CardItem translateZ="100" className="w-full mt-4">
+                      <CardItem translateZ="100" className="w-full mt-3 sm:mt-4">
                         <Image
                           src={card.thumbnail}
-                          className="rounded-xl"
+                          className="rounded-xl object-cover"
                           alt="thumbnail"
                           width={1200}
                           height={800}
@@ -71,36 +75,13 @@ export default function EventsPage() {
                           unoptimized={typeof card.thumbnail === "string"}
                           sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 33vw"
                         />
-                        <span className="absolute top-3 right-3 z-10">
-                          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black/70 shadow-lg transition hover:bg-blue-500/80">
-                            <FiArrowRight className="text-white text-2xl" />
+                        {!isSpecial && (
+                          <span className="absolute top-2 sm:top-3 right-2 sm:right-3 z-10">
+                            <span className="inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/70 shadow-lg transition hover:bg-blue-500/80">
+                              <FiArrowRight className="text-white text-xl sm:text-2xl" />
+                            </span>
                           </span>
-                        </span>
-                      </CardItem>
-                    </CardBody>
-                  </CardContainer>
-                </div>
-              ) : (
-                <div
-                  onClick={() => router.push(`${pathname}/${card.id}`)}
-                  className="cursor-pointer"
-                >
-                  <CardContainer
-                    key={index}
-                    containerClassName="relative flex items-center justify-center transition-all duration-200 ease-linear"
-                  >
-                    <CardBody className="relative">
-                      <CardItem translateZ="100" className="w-full mt-4">
-                        <Image
-                          src={card.thumbnail}
-                          className="rounded-xl"
-                          alt="thumbnail"
-                          width={1200}
-                          height={800}
-                          priority
-                          unoptimized={typeof card.thumbnail === "string"}
-                          sizes="(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                        />
+                        )}
                       </CardItem>
                     </CardBody>
                   </CardContainer>
@@ -109,6 +90,7 @@ export default function EventsPage() {
             })}
         </div>
       </div>
+
       {/* Wavy hover effect keyframes */}
       <style jsx global>{`
         @keyframes wavy {

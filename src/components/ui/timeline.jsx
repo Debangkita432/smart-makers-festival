@@ -6,18 +6,18 @@ import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 
 const timelineData = [
-  { title: "Maker's Workshop", date: "5th September, 2025", description: "coming soon..", location: "IEM" },
-  { title: "Project XPO", date: "5th September, 2025", description: "coming soon..", location: "IEM" },
-  { title: "The Virtual Arena", date: "5th September, 2025", description: "coming soon..", location: "IEM" },
-  { title: "Think-a-thon", date: "6th September, 2025", description: "coming soon..", location: "IEM" },
-  { title: "CTRL+ Play ", date: "6th September, 2025", description: "coming soon..", location: "IEM" },
-  { title: "Artisans Alley", date: "6th September, 2025", description: "coming soon..", location: "IEM" },
-  { title: "The LEGO Land -Up", date: "6th September, 2025", description: "coming soon..", location: "IEM" },
-  { title: "Reelvolution", date: "7th September, 2025", description: "coming soon..", location: "IEM" },
-  { title: "Smart Make-a-thon", date: "7th September, 2025", description: "coming soon..", location: "IEM" },
-  { title: "Smart Power Talk", date: "7th September, 2025", description: "coming soon..", location: "IEM" },
-  { title: "Visual Vortex", date: "7th September, 2025", description: "coming soon..", location: "IEM" },
-  { title: "Flavour Fiesta", date: "7th September, 2025", description: "coming soon..", location: "IEM" },
+  { title: "Maker's Workshop", date: "5th September, 2025",  location: "IEM" },
+  { title: "Project XPO", date: "6th - 7th September, 2025",location: "IEM" },
+  { title: "Think-a-thon", date: "6th September, 2025",location: "IEM" },
+  { title: "CTRL+ Play ", date: "6th September, 2025", location: "IEM" },
+  { title: "Artisans Alley", date: "6th September, 2025",  location: "IEM" },
+  { title: "The LEGO Land -Up", date: "6th September, 2025",  location: "IEM" },
+  { title: "Reelvolution", date: "6th-7th September, 2025",location: "IEM" },
+  { title: "Smart Make-a-thon", date: "6th-7th September, 2025", location: "IEM" },
+  { title: "Smart Power Talk", date: "6th-7th September, 2025", location: "IEM" },
+  { title: "Visual Vortex", date: "6th-7th September, 2025", location: "IEM" },
+  { title: "Flavour Fiesta", date: "6th-7th September, 2025", location: "IEM" },
+  { title: "The Virtual Arena", date: "7th September, 2025",  location: "IEM" },
 ];
 
 export default function Timeline() {

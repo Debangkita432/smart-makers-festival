@@ -26,13 +26,16 @@ export function Header() {
   return (
     <header className="flex fixed top-0 z-50 w-full justify-center text-white text-sm transition-transform duration-300 pt-4">
       <nav
-        className="relative max-w-[80rem] w-full shadow backdrop-blur-xl bg-white/10 rounded-[50px] mx-2 py-4 px-6 lg:px-10 xl:mx-auto overflow-visible"
+        className="relative w-full shadow backdrop-blur-xl bg-white/10 rounded-[50px] mx-2 py-4 px-6 lg:px-10 xl:mx-auto overflow-visible
+        max-w-[80rem]
+        md:rounded-[50px] md:mx-2 md:px-6
+        sm:max-w-[95vw] sm:mx-auto sm:px-3 sm:rounded-[2rem]"
         aria-label="Global"
       >
         {/* Desktop layout: Logo + Nav aligned in same row */}
         <div className="flex items-center justify-between w-full">
           {/* Logo (always left) */}
-          <Link href="/" className="flex flex-col items-start leading-none">
+          <Link href="/" className="flex flex-col items-start leading-none justify-center min-h-[44px]">
             <h1 className={cn("text-base md:text-xl", orbitronFont.className)}>SMF</h1>
             <span
               className={cn(
@@ -45,19 +48,19 @@ export function Header() {
           </Link>
 
           {/* Hamburger: only on mobile */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center justify-center min-h-[44px]">
             <Button
               type="button"
               size="icon"
               variant="secondary"
-              className="rounded-2xl shadow"
+              className="rounded-2xl shadow min-w-[44px] min-h-[44px] flex items-center justify-center"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle navigation"
             >
               {isOpen ? (
-                <Cross1Icon className="size-4" />
+                <Cross1Icon className="size-5" />
               ) : (
-                <HamburgerMenuIcon className="size-4" />
+                <HamburgerMenuIcon className="size-5" />
               )}
             </Button>
           </div>
@@ -98,14 +101,14 @@ export function Header() {
 
         {/* Mobile Navigation Menu */}
         {isOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 mt-4 bg-white/10 backdrop-blur-xl rounded-[20px] p-6 shadow-lg border border-white/20">
+          <div className="md:hidden absolute top-full left-0 right-0 mt-4 bg-white/40 backdrop-blur-lg border border-white/20 rounded-2xl p-6 shadow-lg">
             <div className="flex flex-col gap-6">
               {navItems.map((item, idx) => (
                 <a
                   key={idx}
                   href={item.href}
                   className={cn(
-                    "capitalize no-underline transition-colors duration-300 hover:text-[#4da6ff] text-lg",
+                    "capitalize no-underline transition-colors duration-300 hover:text-blue-700 text-lg",
                     orbitronFont.className
                   )}
                   onClick={() => setIsOpen(false)}

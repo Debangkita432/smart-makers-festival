@@ -76,7 +76,7 @@ const PictureGallery: React.FC = () => {
   };
 
   return (
-    <div className="mt-12 sm:mt-16 lg:mt-24 mb-0 w-full pt-6 sm:pt-8 lg:pt-12 pb-0">
+    <div className="mt-32 sm:mt-16 lg:mt-24 mb-0 w-full pt-6 sm:pt-8 lg:pt-12 pb-0">
       {/* Carousel using Swiper */}
       <div className="px-2 sm:px-6 max-w-full" style={{ maxWidth: "100vw" }}>
         <Swiper

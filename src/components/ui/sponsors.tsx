@@ -6,12 +6,22 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const sponsors = [
-  "/coming.png",
-  "/coming.png",
-  "/coming.png",
-  "/coming.png",
-  "/coming.png",
-  "/coming.png",
+  "/sponsor1.png",
+  "/sponsor2.png",
+  "/sponsor3.png",
+  "/sponsor4.png",
+  "/sponsor5.png",
+  "/sponsor6.png",
+  "/sponsor7.png",
+  "/sponsor8.png",
+  "/sponsor9.png",
+  "/sponsor10.png",
+  "/sponsor11.png",
+  "/sponsor12.png",
+  "/sponsor13.png",
+  "/sponsor14.png",
+  "/sponsor15.png",
+  "/sponsor16.png",
 ];
 
 const SponsorCarousel: React.FC = () => {
