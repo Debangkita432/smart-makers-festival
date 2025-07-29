@@ -15,6 +15,13 @@ const config = {
     "node_modules/preline/dist/*.js",
   ],
   prefix: "",
+  safelist: [
+    "z-[9999]",
+    "overflow-visible",
+    "sm:px-4",
+    "rounded-[50px]",
+    "rounded-[2rem]",
+  ],
   theme: {
     extend: {
       fontFamily: {

@@ -4,7 +4,6 @@ import { orbitronFont } from "@/lib/fonts";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
-
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 
@@ -20,22 +19,24 @@ const navItems: NavItem[] = [
 ];
 
 export function Header() {
-  
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="flex fixed top-0 z-50 w-full justify-center text-white text-sm transition-transform duration-300 pt-4">
+    <header className="flex fixed top-0 z-[9999] w-full justify-center text-white text-sm transition-transform duration-300 pt-4">
       <nav
         className="relative w-full shadow backdrop-blur-xl bg-white/10 rounded-[50px] mx-2 py-4 px-6 lg:px-10 xl:mx-auto overflow-visible
         max-w-[80rem]
         md:rounded-[50px] md:mx-2 md:px-6
-        sm:max-w-[95vw] sm:mx-auto sm:px-3 sm:rounded-[2rem]"
+        sm:max-w-[95vw] sm:mx-auto sm:px-4 sm:rounded-[2rem]"
         aria-label="Global"
       >
         {/* Desktop layout: Logo + Nav aligned in same row */}
         <div className="flex items-center justify-between w-full">
-          {/* Logo (always left) */}
-          <Link href="/" className="flex flex-col items-start leading-none justify-center min-h-[44px]">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="flex flex-col items-start leading-none justify-center min-h-[44px]"
+          >
             <h1 className={cn("text-base md:text-xl", orbitronFont.className)}>SMF</h1>
             <span
               className={cn(
@@ -53,7 +54,7 @@ export function Header() {
               type="button"
               size="icon"
               variant="secondary"
-              className="rounded-2xl shadow min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="rounded-2xl shadow min-w-[44px] min-h-[44px] flex items-center justify-center mr-1"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle navigation"
             >
@@ -91,9 +92,7 @@ export function Header() {
                   orbitronFont.className
                 )}
               >
-                <Link href="/register">
-                  Register Now
-                </Link>
+                <Link href="/register">Register Now</Link>
               </Button>
             </div>
           </div>
@@ -128,9 +127,7 @@ export function Header() {
                 )}
                 onClick={() => setIsOpen(false)}
               >
-                <Link href="/register">
-                  Register Now
-                </Link>
+                <Link href="/register">Register Now</Link>
               </Button>
             </div>
           </div>

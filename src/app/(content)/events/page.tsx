@@ -11,10 +11,10 @@ export default function EventsPage() {
   return (
     <>
       {/* Heading */}
-      <Container className="mx-auto pt-32">
+      <Container className="mx-auto pt-32 w-full">
         <div
           className={cn(
-            "text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl w-fit text-center duration-500",
+            "text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-center duration-500",
             orbitronFont.className
           )}
         >
