@@ -3,35 +3,102 @@
 import Image from "next/image";
 import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import { FiLinkedin, FiMail } from "react-icons/fi";
+import { useState } from "react";
 
 const facultyMembers = [
-  { name: "Dr. Sudipta Roy", role: "Faculty Head", image: "/coming.png" },
-  { name: "Prof. Sanchita Paul", role: "Faculty Advisor", image: "/coming.png" },
-  { name: "Prof. Amitava Das", role: "Tech Mentor", image: "/coming.png" },
+  { name: "Prof. Dr. Banani Chakraborty", role: "President of IEM", image: "/coming.png" },
+  { name: "Prof. Dr. Satyajit Chakrabarti", role: "Director of IEM", image: "/satyajit sir.jpeg" },
+  { name: "Prof. Dibakar Roy Choudhury", role: "Faculty Head", image: "/dibakar sir.jpeg" },
 ];
 
 const teamMembers = [
-  { name: "Team Member 1", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 2", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 3", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 4", role: "Technical Team", image: "/coming.png" },
-  { name: "Teaadm Member 5", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 6", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 7", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 8", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 9", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 10", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 11", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 12", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 13", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 14", role: "Technical Team", image: "/coming.png" },
-  { name: "Team Member 15", role: "Technical Team", image: "/coming.png" },
+  { 
+    name: "Debangkita Saha", 
+    linkedin: "https://www.linkedin.com/in/debangkita-saha-304a3b290/", 
+    mail: "mailto:debangkitasaha21jan2005@gmail.com", 
+    image: "/debangkita.jpeg" 
+  },
+  { 
+    name: "Debangshu Chatterjee", 
+    linkedin: "https://www.linkedin.com/in/debangshu-chatterjee-858859282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+    mail: "mailto:debangshuchatterjee2005@gmail.com", 
+    image: "/debangshu.jpeg" 
+  },
+  { 
+    name: "Arpan Kumar Sahoo", 
+    linkedin: "https://www.linkedin.com/in/arpan-kumar-sahoo-668145322", 
+    mail: "mailto:Arpansahoo413@gmail.com", 
+    image: "/arpan.jpeg" 
+  },
+  { 
+    name: "Iman Datta", 
+    linkedin: "https://www.linkedin.com/in/iman-datta-161615307/", 
+    mail: "mailto:dattaiman56@gmail.com", 
+    image: "/iman.jpeg" 
+  },
 ];
 
-const alumniMembers = [
-  { name: "Alumni 1", role: "Former Member", image: "/coming.png" },
-  { name: "Alumni 2", role: "Former Member", image: "/coming.png" },
-];
+// Reusable Card Component
+function MemberCard({ member, showIcons = false }: { member: any; showIcons?: boolean }) {
+  const [active, setActive] = useState(false);
+
+  const handleClick = () => {
+    setActive(true);
+    setTimeout(() => setActive(false), 2000); // active for 2 seconds
+  };
+
+  return (
+    <div
+      className="relative w-[150px] sm:w-[180px] aspect-square group cursor-pointer"
+      onClick={handleClick}
+    >
+      {/* Image */}
+      <div
+        className={`absolute inset-0 z-20 border border-white rounded-lg overflow-hidden transition-transform duration-500 ease-in-out 
+          ${active ? "-translate-y-12 -translate-x-2" : ""}
+          sm:group-hover:-translate-y-12 sm:group-hover:-translate-x-2`}
+      >
+        <Image
+          src={member.image}
+          alt={member.name}
+          fill
+          className="object-cover rounded-lg"
+        />
+      </div>
+
+      {/* Overlay */}
+      <div
+        className={`absolute inset-0 z-10 flex flex-col items-center justify-end p-3 pb-6 rounded-lg bg-gradient-to-t from-white/90 via-white/30 to-transparent transition-transform duration-500 ease-in-out 
+          ${active ? "translate-y-12 translate-x-2" : ""}
+          sm:group-hover:translate-y-12 sm:group-hover:translate-x-2`}
+      >
+        <h2 className="text-sm font-semibold text-black drop-shadow-lg text-center">{member.name}</h2>
+        {member.role && <p className="text-blue-800 text-xs mt-1 text-center">{member.role}</p>}
+        {showIcons && (
+          <div className="flex gap-3 mt-2">
+            <a
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 transition"
+            >
+              <FiLinkedin className="w-4 h-4" />
+            </a>
+            <a
+              href={member.mail}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-700 hover:text-black transition"
+            >
+              <FiMail className="w-4 h-4" />
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export function Team() {
   return (
@@ -42,75 +109,33 @@ export function Team() {
           Faculty Team
         </h1>
       </div>
-      <div className="glassmorphic-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center py-10 mt-6">
+      <div className="glassmorphic-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center py-10 mt-6">
         {facultyMembers.map((member, i) => (
-          <div key={i} className="relative w-[160px] sm:w-[200px] h-[200px] group">
-            <div className="absolute inset-0 z-20 border border-white transition-transform duration-500 ease-in-out group-hover:-translate-x-6 group-hover:-translate-y-6 rounded-lg overflow-hidden">
-              <Image src={member.image} alt={member.name} fill className="object-cover" />
-            </div>
-            <div className="absolute inset-0 z-10 bg-white flex items-end p-3 transition-transform duration-500 ease-in-out group-hover:translate-x-6 group-hover:translate-y-6 rounded-lg">
-              <div className="text-center w-full">
-                <h2 className="text-sm font-semibold text-black">{member.name}</h2>
-                <p className="text-blue-800 text-xs">{member.role}</p>
-              </div>
-            </div>
-          </div>
+          <MemberCard key={i} member={member} />
         ))}
       </div>
 
-      {/* Core Team Section */}
+      {/* Technical Team Section */}
       <div className="text-center pt-10">
         <h1 className={cn("text-3xl sm:text-5xl text-white", orbitronFont.className)}>
-          Core Team
+          Technical Team
         </h1>
       </div>
-      <div className="glassmorphic-container grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-10 justify-items-center py-10 mt-6">
+      <div className="glassmorphic-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center py-10 mt-6">
         {teamMembers.map((member, i) => (
-          <div key={i} className="relative w-[160px] sm:w-[200px] h-[200px] group">
-            <div className="absolute inset-0 z-20 border border-white transition-transform duration-500 ease-in-out group-hover:-translate-x-6 group-hover:-translate-y-6 rounded-lg overflow-hidden">
-              <Image src={member.image} alt={member.name} fill className="object-cover" />
-            </div>
-            <div className="absolute inset-0 z-10 bg-white flex items-end p-3 transition-transform duration-500 ease-in-out group-hover:translate-x-6 group-hover:translate-y-6 rounded-lg">
-              <div className="text-center w-full">
-                <h2 className="text-sm font-semibold text-black">{member.name}</h2>
-                <p className="text-blue-800 text-xs">{member.role}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Alumni Section */}
-      <div className="text-center pt-10">
-        <h1 className={cn("text-3xl sm:text-5xl text-white", orbitronFont.className)}>
-          Alumni Team
-        </h1>
-      </div>
-      <div className="glassmorphic-container flex flex-col sm:flex-row sm:justify-center sm:gap-12 gap-6 items-center py-10 mt-6">
-        {alumniMembers.map((member, i) => (
-          <div key={i} className="relative w-[160px] sm:w-[200px] h-[200px] group">
-            <div className="absolute inset-0 z-20 border border-white transition-transform duration-500 ease-in-out group-hover:-translate-x-6 group-hover:-translate-y-6 rounded-lg overflow-hidden">
-              <Image src={member.image} alt={member.name} fill className="object-cover" />
-            </div>
-            <div className="absolute inset-0 z-10 bg-white flex items-end p-3 transition-transform duration-500 ease-in-out group-hover:translate-x-6 group-hover:translate-y-6 rounded-lg">
-              <div className="text-center w-full">
-                <h2 className="text-sm font-semibold text-black">{member.name}</h2>
-                <p className="text-blue-800 text-xs">{member.role}</p>
-              </div>
-            </div>
-          </div>
+          <MemberCard key={i} member={member} showIcons />
         ))}
       </div>
 
       {/* Glassmorphic style */}
       <style jsx>{`
         .glassmorphic-container {
-          background: rgba(255, 255, 255, 0.03);
+          background: rgba(255, 255, 255, 0.08);
           border-radius: 28px;
-          padding: 32px;
-          backdrop-filter: blur(28px);
-          -webkit-backdrop-filter: blur(28px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 28px;
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
+          border: 1px solid rgba(255, 255, 255, 0.15);
         }
       `}</style>
     </div>

@@ -3,7 +3,7 @@ import InstagramIcon from "../icons/InstagramIcon";
 import EmailIcon from "../icons/EmailIcon";
 import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import { FiFacebook, FiLinkedin } from "react-icons/fi";
+import { FiFacebook } from "react-icons/fi";
 
 const Footer = () => {
   return (
@@ -18,72 +18,14 @@ const Footer = () => {
         Contact Us
       </h2>
 
-      {/* Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 lg:gap-12 text-center md:text-left mb-4 md:mb-8 lg:mb-12 max-w-6xl mx-auto">
-        
-        {/* Faculty Head */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 underline underline-offset-4 text-white text-center">
-            Faculty Head
-          </h3>
-          <ul className="space-y-2 text-gray-300 text-sm text-center">
-            <li>ABC : +91 1000000000</li>
-            <li>ABC : +91 1000000000</li>
-          </ul>
-        </div>
-
-        {/* Event Heads */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 underline underline-offset-4 text-white text-center">
-            Event Heads
-          </h3>
-          <ul className="space-y-2 text-gray-300 text-sm text-center">
-            <li>ABC : +91 1000000000</li>
-            <li>ABC : +91 1000000000</li>
-          </ul>
-        </div>
-
-        {/* Technical Team */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 underline underline-offset-4 text-white text-center">
-            Technical Team
-          </h3>
-          <ul className="space-y-3 text-gray-300 text-sm">
-            {[
-              { name: "Debangkita Saha", linkedin: "https://www.linkedin.com/in/debangkita-saha-304a3b290/", mail: "mailto:debangkitasaha21jan2005@gmail.com" },
-              { name: "Debangshu Chatterjee", linkedin: "#", mail: "mailto:def@example.com" },
-              { name: "Arpan Kumar Sahoo", linkedin: "https://www.linkedin.com/in/arpan-kumar-sahoo-668145322?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", mail: "mailto:Arpansahoo413@gmail.com" },
-              { name: "Iman Datta", linkedin: "https://www.linkedin.com/in/iman-datta-161615307/", mail: "mailto:dattaiman56@gmail.com" },
-            ].map((member, index) => (
-              <li
-                key={index}
-                className="flex items-center justify-between gap-4"
-              >
-                <span className="text-white font-medium min-w-[200px] text-left">
-                  {member.name}
-                </span>
-                <div className="flex gap-4">
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-tiara_red transition"
-                  >
-                    <FiLinkedin className="w-5 h-5 text-white" />
-                  </a>
-                  <a
-                    href={member.mail}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-tiara_red transition"
-                  >
-                    <EmailIcon className="w-5 h-5" />
-                  </a>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+      {/* Centered Contact List */}
+      <div className="flex justify-center mb-4 md:mb-8 lg:mb-12">
+        <ul className="space-y-5 text-gray-300 text-lg font-semibold text-center">
+          <li>PRIYANSHU PATHAK (MANAGEMENT BUILDING): +91 9609569944</li>
+          <li>ARANYA RATH (GURUKUL CAMPUS): +91 8274090864</li>
+          <li>SOUMYAJEET CHOUDHURY (ASHRAM CAMPUS): +91 7980045149</li>
+          <li>AYUSH DUBEY (UEM KOLKATA): +91 9874861855</li>
+        </ul>
       </div>
 
       {/* Bottom Bar */}
@@ -112,8 +54,6 @@ const Footer = () => {
           >
             <FiFacebook className="w-6 h-6" />
           </a>
-
-
 
           {/* Email */}
           <a

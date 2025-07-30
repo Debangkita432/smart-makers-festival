@@ -5,7 +5,7 @@ import { LabIntro } from "@/components/story/intro";
 import { HeroParallax } from "@/components/widgets/Hero";
 import SponsorCarousel from "@/components/ui/sponsors";
 import MapSection from "@/components/ui/mapsection";
-// import { Team } from "@/components/ui/smfteam";
+import { Team } from "@/components/ui/smfteam";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -80,7 +80,7 @@ export default function Home() {
         {/* 🧩 Collaborator Carousel */}
         <SponsorCarousel />
 
-        
+        <Team/>
 
         {/*  Map Section */}
         <MapSection />
