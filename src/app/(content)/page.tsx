@@ -31,8 +31,8 @@ const images = [
 ];
 
 export default function Home() {
-  
-  
+  const registerFormLink =
+    "https://docs.google.com/forms/d/1y1I8ZDdhxDvmmgctdQKF21nq0yXIzA7NIhNrPc1Kyjs/viewform?edit_requested=true";
 
   return (
     <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col py-0 pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 font-orbitron">
@@ -45,31 +45,29 @@ export default function Home() {
           <div className="flex gap-4">
             <Button
               asChild
-              className={
-                cn(
-                  "px-8 py-3 text-base font-semibold rounded-[1rem] w-32",
-                  "bg-transparent text-white border-2 border-[#001f4d] hover:bg-[#001f4d]/20 hover:border-[#000d26]",
-                  "shadow-[0_0_10px_2px_rgba(0,31,77,0.3)] hover:shadow-[0_0_20px_4px_rgba(0,31,77,0.6)]",
-                  "transition-all duration-300 hover:scale-105",
-                  orbitronFont.className
-                )
-              }
+              className={cn(
+                "px-8 py-3 text-base font-semibold rounded-[1rem] w-32",
+                "bg-transparent text-white border-2 border-[#001f4d] hover:bg-[#001f4d]/20 hover:border-[#000d26]",
+                "shadow-[0_0_10px_2px_rgba(0,31,77,0.3)] hover:shadow-[0_0_20px_4px_rgba(0,31,77,0.6)]",
+                "transition-all duration-300 hover:scale-105",
+                orbitronFont.className
+              )}
             >
               <Link href="/events">Events</Link>
             </Button>
             <Button
               asChild
-              className={
-                cn(
-                  "px-8 py-3 text-sm font-semibold rounded-[1rem] border-2 border-transparent w-32",
-                  "bg-[#001f4d] text-white hover:bg-[#000d26] hover:border-[#4da6ff]",
-                  "shadow-[0_0_10px_2px_rgba(255,255,255,0.3)] hover:shadow-[0_0_20px_4px_rgba(255,255,255,0.6)]",
-                  "transition-all duration-300 hover:scale-105",
-                  orbitronFont.className
-                )
-              }
+              className={cn(
+                "px-8 py-3 text-sm font-semibold rounded-[1rem] border-2 border-transparent w-32",
+                "bg-[#001f4d] text-white hover:bg-[#000d26] hover:border-[#4da6ff]",
+                "shadow-[0_0_10px_2px_rgba(255,255,255,0.3)] hover:shadow-[0_0_20px_4px_rgba(255,255,255,0.6)]",
+                "transition-all duration-300 hover:scale-105",
+                orbitronFont.className
+              )}
             >
-              <Link href="/register">Register Now</Link>
+              <Link href={registerFormLink} target="_blank" rel="noopener noreferrer">
+                Register Now
+              </Link>
             </Button>
           </div>
         </div>
@@ -80,7 +78,7 @@ export default function Home() {
         {/* 🧩 Collaborator Carousel */}
         <SponsorCarousel />
 
-        <Team/>
+        <Team />
 
         {/*  Map Section */}
         <MapSection />

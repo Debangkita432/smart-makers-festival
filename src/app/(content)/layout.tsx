@@ -1,21 +1,27 @@
-import Glow from "@/components/shared/glow";
-import { StarsCanvas } from "@/components/ui/Stars";
-import Footer from "@/components/widgets/Footer";
-import { Header } from "@/components/widgets/Header";
-import React from "react";
+import "@/app/globals.css";
+import AppWrapper from "@/components/widgets/AppWrapper";
+import { cn } from "@/lib/utils";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 
-function ContentLayout({ children }: { children: React.ReactNode }) {
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+
+export const metadata: Metadata = {
+  title: "Smart Maker Festival 2025",
+  description: "Smart Maker Festival 2025",
+  icons: { icon: "/coming.png" },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <>
-      <StarsCanvas />
-      <Glow />
-      <div className="flex min-h-screen w-full flex-col">
-        <Header />
-        {children}
-      </div>
-      <Footer />
-    </>
+    <html lang="en">
+      <body className={cn("bg-background font-sans antialiased", inter.variable)}>
+        <AppWrapper>{children}</AppWrapper>
+      </body>
+    </html>
   );
 }
-
-export default ContentLayout;

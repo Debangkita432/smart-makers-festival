@@ -56,7 +56,9 @@ export default function Carousel(): React.JSX.Element {
 
   return (
     <div className="carousel-container">
-      <h2 className={`carousel-heading ${orbitronFont.className}`}>Our Guests</h2>
+      <h2 className={`carousel-heading ${orbitronFont.className}`}>
+        Maker’s Awardees 2024
+      </h2>
 
       <div id="carouselWrapper">
         <div className="list_container">
@@ -93,12 +95,19 @@ export default function Carousel(): React.JSX.Element {
         }
 
         .carousel-heading {
-          font-size: 2.8rem;
+          font-size: 2rem; /* reduced size */
           font-weight: 600;
           color: #00bfff;
           text-align: left;
-          margin-bottom: 2rem;
-          letter-spacing: 2px;
+          margin-bottom: 1.5rem;
+          letter-spacing: 1.5px;
+        }
+
+        @media (max-width: 640px) {
+          .carousel-heading {
+            font-size: 1.6rem; /* smaller for mobile */
+            text-align: center;
+          }
         }
 
         #carouselWrapper {
@@ -171,7 +180,7 @@ export default function Carousel(): React.JSX.Element {
           background: rgba(255, 255, 255, 0.2);
         }
 
-        /* 🔹 Mobile adjustments: shrink whole carousel */
+        /* Mobile adjustments */
         @media (max-width: 640px) {
           #carouselWrapper {
             height: 350px;
@@ -187,3 +196,4 @@ export default function Carousel(): React.JSX.Element {
     </div>
   );
 }
+ 

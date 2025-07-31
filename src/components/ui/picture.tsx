@@ -2,8 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { orbitronFont } from "@/lib/fonts";
-import { cn } from "@/lib/utils";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
 import "swiper/css";
@@ -20,6 +18,12 @@ const topImages = [
   "/picture7.jpeg",
   "/picture8.jpeg",
   "/picture9.jpeg",
+  "/picture10.jpeg",
+  "/picture11.jpeg",
+  "/picture12.jpeg",
+  "/picture13.jpeg",
+  "/picture14.jpeg",
+  "/picture15.jpeg",
 ];
 
 const PictureGallery: React.FC = () => {
@@ -77,7 +81,6 @@ const PictureGallery: React.FC = () => {
 
   return (
     <div className="mt-32 sm:mt-16 lg:mt-24 mb-0 w-full pt-6 sm:pt-8 lg:pt-12 pb-0">
-      {/* Carousel using Swiper */}
       <div className="px-2 sm:px-6 max-w-full" style={{ maxWidth: "100vw" }}>
         <Swiper
           modules={[EffectCoverflow, Autoplay, Navigation]}
@@ -101,9 +104,8 @@ const PictureGallery: React.FC = () => {
           loop={true}
           navigation={true}
           className="mySwiper w-full !mb-0 !pb-0"
-          style={{ width: "100%", maxWidth: "100vw", marginBottom: 0, paddingBottom: 0 }}
+          style={{ width: "100%", maxWidth: "100vw" }}
           key={`swiper-${cardWidth}-${cardHeight}`}
-          onSwiper={(swiper) => { console.log('Swiper initialized:', swiper); }}
         >
           {topImages.map((src, index) => (
             <SwiperSlide
@@ -113,24 +115,22 @@ const PictureGallery: React.FC = () => {
                 height: `${cardHeight}px`,
                 maxWidth: "90vw",
                 maxHeight: "60vw",
-                marginBottom: 0,
-                paddingBottom: 0,
               }}
-              className="rounded-xl overflow-hidden shadow-xl border border-white/20 hover:shadow-blue-500/40 cursor-pointer bg-black/60 !mb-0 !pb-0"
+              className="rounded-xl overflow-hidden shadow-xl border border-white/20 hover:shadow-blue-500/40 cursor-pointer bg-black/60"
               onClick={() => handleImageClick(src)}
             >
-              {/* Blue Glow Behind Card */}
+              {/* Glow behind card */}
               <div
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
                   top: 0,
                   left: 0,
-                  width: '100%',
-                  height: '100%',
+                  width: "100%",
+                  height: "100%",
                   zIndex: 0,
-                  borderRadius: '0.75rem',
-                  boxShadow: '0 0 16px 4px #00bfff66, 0 0 32px 8px #4da6ff33',
-                  pointerEvents: 'none',
+                  borderRadius: "0.75rem",
+                  boxShadow: "0 0 16px 4px #00bfff66, 0 0 32px 8px #4da6ff33",
+                  pointerEvents: "none",
                 }}
               />
               <Image
@@ -138,7 +138,7 @@ const PictureGallery: React.FC = () => {
                 alt={`Gallery image ${index + 1}`}
                 width={cardWidth}
                 height={cardHeight}
-                className="object-cover w-full h-full rounded-xl hover:opacity-100 transition duration-300"
+                className="object-cover w-full h-full rounded-xl transition duration-300"
                 style={{ maxWidth: "100%", maxHeight: "100%", objectPosition: "center 20%" }}
               />
             </SwiperSlide>
@@ -146,16 +146,12 @@ const PictureGallery: React.FC = () => {
         </Swiper>
       </div>
 
-      {/* Style override for white arrows */}
+      {/* Custom arrow styles */}
       <style jsx global>{`
-        .swiper-wrapper, .swiper-slide {
-          margin-bottom: 0 !important;
-          padding-bottom: 0 !important;
-        }
         .swiper-button-next,
         .swiper-button-prev {
           color: white !important;
-          background: rgba(0,0,0,0.5);
+          background: rgba(0, 0, 0, 0.5);
           border-radius: 50%;
           width: 36px;
           height: 36px;
@@ -163,7 +159,8 @@ const PictureGallery: React.FC = () => {
           align-items: center;
           justify-content: center;
         }
-        .swiper-button-next:after, .swiper-button-prev:after {
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
           font-size: 20px !important;
         }
         .swiper-button-next {
@@ -173,11 +170,13 @@ const PictureGallery: React.FC = () => {
           left: 8px !important;
         }
         @media (max-width: 640px) {
-          .swiper-button-next, .swiper-button-prev {
+          .swiper-button-next,
+          .swiper-button-prev {
             width: 28px;
             height: 28px;
           }
-          .swiper-button-next:after, .swiper-button-prev:after {
+          .swiper-button-next:after,
+          .swiper-button-prev:after {
             font-size: 16px !important;
           }
         }

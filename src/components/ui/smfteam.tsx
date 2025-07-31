@@ -7,7 +7,7 @@ import { FiLinkedin, FiMail } from "react-icons/fi";
 import { useState } from "react";
 
 const facultyMembers = [
-  { name: "Prof. Dr. Banani Chakraborty", role: "President of IEM", image: "/coming.png" },
+  { name: "Prof. Dr. Banani Chakraborty", role: "President of IEM", image: "/banani_maam.png" },
   { name: "Prof. Dr. Satyajit Chakrabarti", role: "Director of IEM", image: "/satyajit sir.jpeg" },
   { name: "Prof. Dibakar Roy Choudhury", role: "Faculty Head", image: "/dibakar sir.jpeg" },
 ];

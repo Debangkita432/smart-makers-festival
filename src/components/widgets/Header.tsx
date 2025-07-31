@@ -16,6 +16,9 @@ export function Header() {
     { label: "gallery", href: "/about" },
   ];
 
+  const registerFormLink =
+    "https://docs.google.com/forms/d/1y1I8ZDdhxDvmmgctdQKF21nq0yXIzA7NIhNrPc1Kyjs/viewform?edit_requested=true";
+
   return (
     <header className="fixed top-0 z-[9999] w-full flex justify-center pt-4">
       <nav
@@ -61,7 +64,9 @@ export function Header() {
               orbitronFont.className
             )}
           >
-            <Link href="/register">Register Now</Link>
+            <Link href={registerFormLink} target="_blank" rel="noopener noreferrer">
+              Register Now
+            </Link>
           </Button>
         </div>
 
@@ -109,7 +114,9 @@ export function Header() {
                 )}
                 onClick={() => setIsOpen(false)}
               >
-                <Link href="/register">Register Now</Link>
+                <Link href={registerFormLink} target="_blank" rel="noopener noreferrer">
+                  Register Now
+                </Link>
               </Button>
             </div>
           </div>
