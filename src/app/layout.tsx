@@ -3,6 +3,10 @@ import AppWrapper from "@/components/widgets/AppWrapper";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { orbitronFont } from "@/lib/fonts";
+import { Header } from "@/components/widgets/Header";
+import Footer from "@/components/widgets/Footer";
+import { StarsCanvas } from "@/components/ui/Stars";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -19,8 +23,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn("bg-background font-sans antialiased", inter.variable)}>
-        <AppWrapper>{children}</AppWrapper>
+      <body className={cn("bg-background font-sans antialiased", inter.variable, orbitronFont.variable)}>
+        <StarsCanvas />
+        <AppWrapper>
+          <Header />
+          {children}
+          <Footer />
+        </AppWrapper>
       </body>
     </html>
   );

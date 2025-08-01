@@ -45,7 +45,7 @@ function MemberCard({ member, showIcons = false }: { member: any; showIcons?: bo
 
   const handleClick = () => {
     setActive(true);
-    setTimeout(() => setActive(false), 2000); // active for 2 seconds
+    setTimeout(() => setActive(false), 2000);
   };
 
   return (
@@ -53,7 +53,7 @@ function MemberCard({ member, showIcons = false }: { member: any; showIcons?: bo
       className="relative w-[150px] sm:w-[180px] aspect-square group cursor-pointer"
       onClick={handleClick}
     >
-      {/* Image */}
+      {/* Image Container */}
       <div
         className={`absolute inset-0 z-20 border border-white rounded-lg overflow-hidden transition-transform duration-500 ease-in-out 
           ${active ? "-translate-y-12 -translate-x-2" : ""}
@@ -63,7 +63,7 @@ function MemberCard({ member, showIcons = false }: { member: any; showIcons?: bo
           src={member.image}
           alt={member.name}
           fill
-          className="object-cover rounded-lg"
+          className="object-cover object-top" // fixed: no rounded-lg, prevents image from spilling
         />
       </div>
 

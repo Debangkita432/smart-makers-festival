@@ -138,11 +138,12 @@ export const Header = () => {
         IEM PRESENTS
       </motion.h2>
       <motion.h1
-        initial={{ opacity: 0.5, y: 100 }}
+        initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
+        transition={{ delay: 0.2, duration: 1, ease: "easeOut" }}
         className={cn(
-          "pt-20 text-center text-5xl md:text-6xl lg:text-9xl text-[#00bfff]",
+          "pt-20 text-center text-5xl md:text-6xl lg:text-9xl font-extrabold " +
+            "text-[#00bfff] drop-shadow-[0_0_25px_rgba(0,191,255,0.7)]",
           orbitronFont.className
         )}
       >
@@ -152,7 +153,10 @@ export const Header = () => {
         initial={{ opacity: 0.5, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
-        className={cn("mt-2 text-center text-xl md:text-4xl", orbitronFont.className)}
+        className={cn(
+          "mt-2 text-center text-xl md:text-4xl text-gray-300",
+          orbitronFont.className
+        )}
       >
         redefining technology...
       </motion.h2>

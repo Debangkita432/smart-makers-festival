@@ -35,7 +35,7 @@ export default function EventsPage() {
       <div className="flex justify-center items-center pt-28 px-4 sm:px-0 z-50">
         <div
           className={cn(
-            "text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl w-fit text-center duration-500",
+            "text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl w-fit text-center duration-500 text-[#00bfff] drop-shadow-[0_0_25px_rgba(0,191,255,0.8)]",
             tiaraFont.className
           )}
         >
@@ -59,7 +59,7 @@ export default function EventsPage() {
                 >
                   <CardContainer
                     containerClassName={cn(
-                      "relative flex items-center justify-center transition-all duration-200 ease-linear",
+                      "relative flex items-center justify-center transition-all duration-200 ease-linear hover:drop-shadow-[0_0_20px_rgba(0,191,255,0.6)]",
                       !isSpecial && "group-hover:animate-wavy"
                     )}
                   >

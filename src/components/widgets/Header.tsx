@@ -17,7 +17,7 @@ export function Header() {
   ];
 
   const registerFormLink =
-    "https://docs.google.com/forms/d/1y1I8ZDdhxDvmmgctdQKF21nq0yXIzA7NIhNrPc1Kyjs/viewform?edit_requested=true";
+    "https://forms.gle/WGzAWP7i4f4G3y6C8"; // <-- Updated Google Form link
 
   return (
     <header className="fixed top-0 z-[9999] w-full flex justify-center pt-4">

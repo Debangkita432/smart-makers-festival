@@ -28,6 +28,7 @@ const config = {
         sans: ["var(--font-sans)", ...fontFamily.sans],
         tiara: ["Tiara", "sans-serif"],
         basement: ["Basement", "sans-serif"],
+        orbitron: ["var(--font-orbitron)", ...fontFamily.sans],
       },
       width: {
         maxPage: "96.5vw",

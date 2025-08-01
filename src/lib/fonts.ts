@@ -7,6 +7,7 @@ export const orbitronFont = Orbitron({
   subsets: ["latin"],
   weight: ["400", "600", "700"], // add more weights if needed
   display: "swap",
+  variable: "--font-orbitron",
 });
 
 export const tiaraFont = localFont({

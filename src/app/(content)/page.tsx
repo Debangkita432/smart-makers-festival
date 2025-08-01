@@ -31,8 +31,7 @@ const images = [
 ];
 
 export default function Home() {
-  const registerFormLink =
-    "https://docs.google.com/forms/d/1y1I8ZDdhxDvmmgctdQKF21nq0yXIzA7NIhNrPc1Kyjs/viewform?edit_requested=true";
+  const registerFormLink = "https://forms.gle/WGzAWP7i4f4G3y6C8"; // <-- Updated Google Form link
 
   return (
     <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col py-0 pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 font-orbitron">

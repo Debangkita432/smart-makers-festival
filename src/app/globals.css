@@ -132,3 +132,32 @@ html.lenis body {
   background-color: darkgrey;
   outline: 1px solid slategrey;
 }
+
+/* Intro Component Styles */
+.intro_container__2gK1r {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+.intro_title__0zIrm {
+  position: relative;
+  z-index: 1;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 0.91;
+  max-width: 80%;
+  margin: 0 auto;
+  color: white;
+}
+
+@media (max-width: 800px) {
+  .intro_title__0zIrm {
+    font-size: 1rem;
+    margin: 0;
+    margin-top: 1rem;
+    padding: 0 1rem;
+    max-width: unset;
+  }
+}
