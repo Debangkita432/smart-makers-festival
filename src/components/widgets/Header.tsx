@@ -19,10 +19,18 @@ export function Header() {
   const registerFormLink =
     "https://forms.gle/WGzAWP7i4f4G3y6C8"; // <-- Updated Google Form link
 
+  const handleToggle = () => {
+    console.log("Toggle clicked, current state:", isOpen);
+    setIsOpen(!isOpen);
+    console.log("New state will be:", !isOpen);
+  };
+
+  console.log("Current isOpen state:", isOpen);
+
   return (
-    <header className="fixed top-0 z-[9999] w-full flex justify-center pt-4">
+    <header className="fixed top-0 z-[9999] w-full flex justify-center pt-4 px-2 sm:px-4">
       <nav
-        className="relative w-full max-w-[95vw] md:max-w-6xl shadow backdrop-blur-xl bg-white/10 rounded-[50px] py-4 px-4 sm:px-6 flex items-center justify-between"
+        className="relative w-full max-w-[95vw] md:max-w-6xl shadow backdrop-blur-xl bg-white/10 rounded-[50px] py-4 px-4 sm:px-6 flex items-center justify-between overflow-hidden"
         aria-label="Global"
       >
         {/* Logo */}
@@ -76,7 +84,7 @@ export function Header() {
             type="button"
             size="icon"
             className="rounded-full bg-black/70 backdrop-blur-md border border-white/20 shadow-md w-12 h-12 flex items-center justify-center"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={handleToggle}
             aria-label="Toggle navigation"
           >
             {isOpen ? (
@@ -86,30 +94,63 @@ export function Header() {
             )}
           </Button>
         </div>
+      </nav>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 mt-4 bg-black/90 backdrop-blur-lg border border-white/20 rounded-2xl p-6 shadow-lg">
-            <div className="flex flex-col gap-6">
-              {navItems.map((item, idx) => (
-                <a
-                  key={idx}
-                  href={item.href}
-                  className={cn(
-                    "capitalize no-underline transition-colors duration-300 hover:text-blue-400 text-lg text-white",
-                    orbitronFont.className
-                  )}
+      {/* Mobile Menu - Styled like the image */}
+      {isOpen && (
+        <>
+          {/* Backdrop */}
+          <div 
+            className="md:hidden fixed inset-0 bg-black/50 z-[9998]" 
+            onClick={() => setIsOpen(false)}
+          />
+          {/* Menu */}
+          <div className="md:hidden fixed top-20 left-1/2 transform -translate-x-1/2 bg-gray-800/95 backdrop-blur-xl border border-white/20 rounded-xl p-4 shadow-2xl max-w-[280px] w-full mx-4 z-[9999]">
+            <div className="flex flex-col items-center">
+              {/* Header with close button */}
+              <div className="flex justify-between items-center w-full mb-3">
+                <div className="flex flex-col items-start">
+                  <h2 className={cn("text-white text-base font-bold", orbitronFont.className)}>
+                    Smart Makers Festival
+                  </h2>
+                  <span className={cn("text-[#4da6ff] text-xs", orbitronFont.className)}>
+                    2025
+                  </span>
+                </div>
+                <Button
+                  type="button"
+                  size="icon"
+                  className="rounded-full bg-gray-700 hover:bg-gray-600 w-7 h-7 flex items-center justify-center"
                   onClick={() => setIsOpen(false)}
                 >
-                  {item.label}
-                </a>
-              ))}
+                  <Cross1Icon className="w-3 h-3 text-white" />
+                </Button>
+              </div>
+
+              {/* Navigation Links */}
+              <div className="flex flex-col gap-2 w-full mb-3">
+                {navItems.map((item, idx) => (
+                  <a
+                    key={idx}
+                    href={item.href}
+                    className={cn(
+                      "capitalize no-underline transition-colors duration-300 text-sm text-white text-center py-1 hover:text-[#4da6ff]",
+                      orbitronFont.className
+                    )}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+
+              {/* Register Button */}
               <Button
                 asChild
                 className={cn(
-                  "px-8 py-4 text-base font-semibold rounded-[1rem] w-full",
+                  "px-4 py-2 text-xs font-semibold rounded-lg w-full",
                   "bg-[#001f4d] text-white hover:bg-[#000d26]",
-                  "shadow-[0_0_15px_4px_rgba(255,255,255,0.25)] hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.4)]",
+                  "shadow-[0_0_15px_4px_rgba(0,31,77,0.3)] hover:shadow-[0_0_25px_6px_rgba(0,31,77,0.6)]",
                   orbitronFont.className
                 )}
                 onClick={() => setIsOpen(false)}
@@ -120,8 +161,8 @@ export function Header() {
               </Button>
             </div>
           </div>
-        )}
-      </nav>
+        </>
+      )}
     </header>
   );
 }

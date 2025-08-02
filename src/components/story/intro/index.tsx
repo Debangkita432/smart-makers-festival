@@ -11,19 +11,19 @@ export const LabIntro = () => {
       <div className="text-center text-white space-y-1 px-4 md:px-12">
         <h2
           className={cn(
-            "intro_title__0zIrm tracking-widest text-[10px] md:text-sm lg:text-base",
+            "intro_title__0zIrm tracking-widest text-lg md:text-2xl lg:text-3xl font-bold",
             orbitronFont.className
           )}
-          style={{ fontWeight: 100 }}
+          style={{ fontWeight: 700 }}
         >
           Unveiling the
         </h2>
         <h2
           className={cn(
-            "intro_title__0zIrm tracking-widest text-[10px] md:text-sm lg:text-base",
+            "intro_title__0zIrm tracking-widest text-lg md:text-2xl lg:text-3xl font-bold",
             orbitronFont.className
           )}
-          style={{ fontWeight: 100 }}
+          style={{ fontWeight: 700 }}
         >
           Smart Maker Festival
         </h2>

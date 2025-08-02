@@ -9,29 +9,29 @@ import Timeline from "@/components/ui/timeline";
 
 export default function EventsPage() {
   return (
-    <>
-      {/* Heading */}
-      <Container className="mx-auto pt-32 w-full">
-        <div
+    <div className="mt-28"> {/* pushes content below the fixed navbar */}
+      <Container>
+        <h1
           className={cn(
-            "text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-center duration-500",
+            "text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-center text-[#00bfff] duration-500",
             orbitronFont.className
           )}
         >
-          <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#00bfff]">
-            Timeline
-          </h1>
-        </div>
+          Timeline
+        </h1>
       </Container>
 
-      {/* Timeline section */}
-      <Timeline />
+      <Container>
+        <Timeline />
+      </Container>
 
-      {/* Brochure download button */}
-      <Brochure />
+      <Container>
+        <Brochure />
+      </Container>
 
-      {/* Team/Guest section */}
-      <Guest />
-    </>
+      <Container>
+        <Guest />
+      </Container>
+    </div>
   );
 }
