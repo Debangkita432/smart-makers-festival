@@ -92,13 +92,15 @@ export default function Carousel(): React.JSX.Element {
           display: flex;
           flex-direction: column;
           align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
         }
 
         .carousel-heading {
           font-size: 2rem; /* reduced size */
           font-weight: 600;
           color: #00bfff;
-          text-align: left;
+          text-align: center;
           margin-bottom: 1.5rem;
           letter-spacing: 1.5px;
         }

@@ -21,17 +21,13 @@ export default function EventsPage() {
         </h1>
       </Container>
 
-      <Container>
-        <Timeline />
-      </Container>
+      <Timeline />
 
       <Container>
         <Brochure />
       </Container>
 
-      <Container>
-        <Guest />
-      </Container>
+      <Guest />
     </div>
   );
 }

@@ -24,7 +24,7 @@ export default function Timeline() {
   const router = useRouter();
 
   return (
-    <div className="w-full mt-24 2xl:w-11/12 mx-auto px-6">
+    <div className="w-full mt-24 max-w-6xl mx-auto px-6">
       <div className="space-y-14">
         {timelineData.map((item, index) => (
           <motion.div
