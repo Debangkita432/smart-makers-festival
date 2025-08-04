@@ -7,8 +7,8 @@ import { orbitronFont } from "@/lib/fonts";
 export default function Brochure() {
   return (
     <div className="flex items-center justify-center my-8 max-w-4xl mx-auto px-6">
-      <div className="ml-20">
-                <Button
+      <div className="ml-24"> {/* increased from ml-20 to ml-24 */}
+        <Button
           asChild
           className={cn(
             "px-6 py-3 text-sm sm:px-12 sm:py-5 sm:text-lg font-semibold rounded-[1rem]",
@@ -17,10 +17,10 @@ export default function Brochure() {
             orbitronFont.className
           )}
         >
-        <Link href="/coming.png" target="_blank" rel="noopener noreferrer">
-          Download Event Brochure
-        </Link>
-      </Button>
+          <Link href="/coming.png" target="_blank" rel="noopener noreferrer">
+            Download Event Brochure
+          </Link>
+        </Button>
       </div>
     </div>
   );

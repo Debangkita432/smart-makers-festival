@@ -13,7 +13,7 @@ const sponsors = [
   "/sponsor5.png",
   "/sponsor6.png",
   "/sponsor7.png",
-  "/sponsor8.png",
+  "/sponsor17.jpeg",
   "/sponsor9.png",
   "/sponsor10.png",
   "/sponsor11.png",
@@ -22,6 +22,7 @@ const sponsors = [
   "/sponsor14.png",
   "/sponsor15.png",
   "/sponsor16.png",
+  
 ];
 
 const SponsorCarousel: React.FC = () => {
@@ -71,7 +72,7 @@ const SponsorCarousel: React.FC = () => {
           ["--marquee-elements-displayed" as any]: elementsDisplayed,
           ["--marquee-element-width" as any]:
             "calc(var(--marquee-width) / var(--marquee-elements-displayed))",
-          ["--marquee-animation-duration" as any]: `${sponsors.length * 3}s`,
+          ["--marquee-animation-duration" as any]: `${sponsors.length * 6}s`, // doubled duration
           width: "var(--marquee-width)",
           height: "var(--marquee-height)",
         }}
@@ -128,7 +129,7 @@ const SponsorCarousel: React.FC = () => {
             }
             100% {
               transform: translateX(
-                calc(-1 * var(--marquee-element-width) * ${sponsors.length})
+                calc(-1 * var(--marquee-element-width) * ${sponsors.length * 2})
               );
             }
           }

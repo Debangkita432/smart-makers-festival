@@ -18,12 +18,12 @@ const topImages = [
   "/picture7.jpeg",
   "/picture8.jpeg",
   "/picture9.jpeg",
-  "/picture10.jpeg",
-  "/picture11.jpeg",
-  "/picture12.jpeg",
-  "/picture13.jpeg",
-  "/picture14.jpeg",
-  "/picture15.jpeg",
+  // "/picture10.jpeg",
+  // "/picture11.jpeg",
+  // "/picture12.jpeg",
+  // "/picture13.jpeg",
+  // "/picture14.jpeg",
+  // "/picture15.jpeg",
 ];
 
 const PictureGallery: React.FC = () => {

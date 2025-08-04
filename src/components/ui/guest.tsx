@@ -1,30 +1,48 @@
 "use client";
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback, useState } from "react";
 import { PanInput, WheelInput } from "@egjs/react-axes";
 import { orbitronFont } from "@/lib/fonts";
 
-const COUNT = 10;
+const images = [
+  { src: "/guest1.jpeg" },
+  { src: "/guest2.jpeg" },
+  { src: "/guest3.jpeg" },
+  { src: "/guest4.jpeg" },
+  { src: "/guest5.jpeg" },
+  { src: "/guest6.jpeg" },
+ 
+  { src: "/guest8.jpeg" },
+  { src: "/guest9.jpeg" },
+  { src: "/guest10.jpeg" },
+  { src: "/guest11.jpeg" },
+];
+
+const COUNT = images.length;
 const ANGLE = 360 / COUNT;
 
 export default function Carousel(): React.JSX.Element {
   const carouselRef = useRef<HTMLDivElement>(null);
-  const rotationRef = useRef(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const updateTransform = (distance = 400) => {
+  const updateTransform = (distance = 500) => {
     if (carouselRef.current) {
-      carouselRef.current.style.transform = `translateZ(-${distance}px) rotateY(${rotationRef.current}deg)`;
+      const rotation = -currentIndex * ANGLE; // snap to index
+      carouselRef.current.style.transform = `translateZ(-${distance}px) rotateY(${rotation}deg)`;
     }
   };
 
   const rotateStep = useCallback(() => {
-    rotationRef.current -= ANGLE;
-    updateTransform(window.innerWidth < 640 ? 250 : 400); // adjust based on screen size
+    setCurrentIndex((prev) => (prev + 1) % COUNT); // step to next image
     timeoutRef.current = setTimeout(rotateStep, 3000);
   }, []);
 
   useEffect(() => {
-    updateTransform(window.innerWidth < 640 ? 250 : 400);
+    updateTransform(window.innerWidth < 640 ? 300 : 500);
+  }, [currentIndex]);
+
+  useEffect(() => {
     timeoutRef.current = setTimeout(rotateStep, 3000);
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -41,18 +59,12 @@ export default function Carousel(): React.JSX.Element {
   }, []);
 
   const rotateLeft = () => {
-    rotationRef.current += ANGLE;
-    updateTransform(window.innerWidth < 640 ? 250 : 400);
+    setCurrentIndex((prev) => (prev - 1 + COUNT) % COUNT);
   };
 
   const rotateRight = () => {
-    rotationRef.current -= ANGLE;
-    updateTransform(window.innerWidth < 640 ? 250 : 400);
+    setCurrentIndex((prev) => (prev + 1) % COUNT);
   };
-
-  const images = Array.from({ length: COUNT }).map((_, i) => ({
-    src: "/coming.png",
-  }));
 
   return (
     <div className="carousel-container">
@@ -67,12 +79,13 @@ export default function Carousel(): React.JSX.Element {
               <figure
                 key={index}
                 style={{
-                  transform: `rotateY(${index * ANGLE}deg) translateZ(400px)`,
+                  transform: `rotateY(${index * ANGLE}deg) translateZ(500px)`,
                 }}
               >
                 <div
                   className="list_cd carousel-touch-area"
                   style={{ backgroundImage: `url(${item.src})` }}
+                  onClick={() => setSelectedImage(item.src)}
                 />
               </figure>
             ))}
@@ -84,6 +97,13 @@ export default function Carousel(): React.JSX.Element {
         <button onClick={rotateLeft}>&larr;</button>
         <button onClick={rotateRight}>&rarr;</button>
       </div>
+
+      {/* Modal for magnified image */}
+      {selectedImage && (
+        <div className="modal" onClick={() => setSelectedImage(null)}>
+          <img src={selectedImage} alt="Magnified" className="modal-image" />
+        </div>
+      )}
 
       <style jsx>{`
         .carousel-container {
@@ -97,7 +117,7 @@ export default function Carousel(): React.JSX.Element {
         }
 
         .carousel-heading {
-          font-size: 2rem; /* reduced size */
+          font-size: 2rem;
           font-weight: 600;
           color: #00bfff;
           text-align: center;
@@ -107,7 +127,7 @@ export default function Carousel(): React.JSX.Element {
 
         @media (max-width: 640px) {
           .carousel-heading {
-            font-size: 1.6rem; /* smaller for mobile */
+            font-size: 1.6rem;
             text-align: center;
           }
         }
@@ -153,10 +173,11 @@ export default function Carousel(): React.JSX.Element {
           background-color: rgba(255, 255, 255, 0.05);
           box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
           transition: transform 0.3s ease-in-out;
+          cursor: pointer;
         }
 
         figure:hover .list_cd {
-          transform: scale(1.1);
+          transform: scale(1.08);
           box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
         }
 
@@ -182,7 +203,27 @@ export default function Carousel(): React.JSX.Element {
           background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Mobile adjustments */
+        /* Modal styling */
+        .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.8);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+        }
+
+        .modal-image {
+          max-width: 90%;
+          max-height: 90%;
+          border-radius: 12px;
+          box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
         @media (max-width: 640px) {
           #carouselWrapper {
             height: 350px;
@@ -198,4 +239,3 @@ export default function Carousel(): React.JSX.Element {
     </div>
   );
 }
- 
