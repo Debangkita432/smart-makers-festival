@@ -7,6 +7,7 @@ import { Autoplay, EffectCoverflow, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
+import useSound from "@/hooks/sound";
 
 const topImages = [
   "/picture1.jpeg",
@@ -18,17 +19,12 @@ const topImages = [
   "/picture7.jpeg",
   "/picture8.jpeg",
   "/picture9.jpeg",
-  // "/picture10.jpeg",
-  // "/picture11.jpeg",
-  // "/picture12.jpeg",
-  // "/picture13.jpeg",
-  // "/picture14.jpeg",
-  // "/picture15.jpeg",
 ];
 
 const PictureGallery: React.FC = () => {
   const [cardWidth, setCardWidth] = useState(300);
   const [cardHeight, setCardHeight] = useState(200);
+  const playNavSound = useSound("/sound/smf.mp3"); // Sound for nav + magnify
 
   useEffect(() => {
     const updateCardSize = () => {
@@ -52,7 +48,9 @@ const PictureGallery: React.FC = () => {
     return () => window.removeEventListener("resize", updateCardSize);
   }, []);
 
+  // Magnify image (now plays sound)
   const handleImageClick = (src: string) => {
+    playNavSound(); // <-- Play sound when magnifying
     const modal = document.createElement("div");
     modal.style.position = "fixed";
     modal.style.top = "0";
@@ -78,6 +76,20 @@ const PictureGallery: React.FC = () => {
     modal.onclick = () => document.body.removeChild(modal);
     document.body.appendChild(modal);
   };
+
+  // Attach sound to Swiper nav buttons after render
+  useEffect(() => {
+    const nextBtn = document.querySelector(".swiper-button-next");
+    const prevBtn = document.querySelector(".swiper-button-prev");
+
+    if (nextBtn) nextBtn.addEventListener("click", playNavSound);
+    if (prevBtn) prevBtn.addEventListener("click", playNavSound);
+
+    return () => {
+      if (nextBtn) nextBtn.removeEventListener("click", playNavSound);
+      if (prevBtn) prevBtn.removeEventListener("click", playNavSound);
+    };
+  }, [playNavSound]);
 
   return (
     <div className="mt-32 sm:mt-16 lg:mt-24 mb-0 w-full pt-6 sm:pt-8 lg:pt-12 pb-0">
@@ -117,9 +129,8 @@ const PictureGallery: React.FC = () => {
                 maxHeight: "60vw",
               }}
               className="rounded-xl overflow-hidden shadow-xl border border-white/20 hover:shadow-blue-500/40 cursor-pointer bg-black/60"
-              onClick={() => handleImageClick(src)}
+              onClick={() => handleImageClick(src)} // <-- Now plays sound
             >
-              {/* Glow behind card */}
               <div
                 style={{
                   position: "absolute",

@@ -7,6 +7,7 @@ import { orbitronFont } from "@/lib/fonts";
 import { Header } from "@/components/widgets/Header";
 import Footer from "@/components/widgets/Footer";
 import { StarsCanvas } from "@/components/ui/Stars";
+// import BotpressLoader from "@/components/widgets/botpressloader"; // NEW
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -16,11 +17,7 @@ export const metadata: Metadata = {
   icons: { icon: "/coming.png" },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={cn("bg-background font-sans antialiased", inter.variable, orbitronFont.variable)}>
@@ -30,6 +27,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </AppWrapper>
+   
       </body>
     </html>
   );

@@ -2,172 +2,153 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Lenis Scroll Setup */
 html.lenis,
 html.lenis body {
   height: auto !important;
 }
-
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
-
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain !important;
 }
-
 .lenis.lenis-stopped {
   overflow: hidden !important;
 }
-
 .lenis.lenis-scrolling iframe {
   pointer-events: none !important;
 }
 
-.lampcontainer {
-  position: relative;
-  margin-top: -330px;
-  contain: layout;
-  height: 420px;
-}
+/* Lamp & Intro */
+.lampcontainer { position: relative; margin-top: -330px; contain: layout; height: 420px; }
+.lamp { width: 100%; height: 400px; position: relative; margin-bottom: -400px; pointer-events: none; user-select: none; }
+.lamp::after { content: ""; position: absolute; inset: 0px 0px 50%; overflow: hidden; opacity: 0.1; }
 
-.lamp {
-  width: 100%;
-  height: 400px;
-  position: relative;
-  margin-bottom: -400px;
-  pointer-events: none;
-  user-select: none;
-  --first: conic-gradient(
-    from 90deg at 80% 50%,
-    hsl(var(--background)),
-    hsl(var(--background)),
-    var(--bottom)
-  );
-  --second: conic-gradient(
-    from 270deg at 20% 50%,
-    var(--bottom),
-    hsl(var(--background)),
-    hsl(var(--background))
-  );
-  -webkit-mask-image: radial-gradient(
-    100% 50% at center center,
-    black,
-    transparent
-  );
-  background-image: var(--first), var(--second);
-  background-position-x: 1%, 99%;
-  background-position-y: 0%, 0%;
-  background-size: 50% 100%, 50% 100%;
-  opacity: 1;
-  transform-origin: center center;
-  background-repeat: no-repeat;
-}
-
-.lamp::after {
-  content: "";
-  position: absolute;
-  inset: 0px 0px 50%;
-  overflow: hidden;
-  opacity: 0.1;
-  -webkit-mask-image: radial-gradient(
-    140px 50% at 50% 100%,
-    black,
-    transparent
-  );
-  mask-image: radial-gradient(140px 50% at 50% 100%, black, transparent);
-}
-
+/* Theme variables */
 @layer base {
   :root {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
-
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
-
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-
     --primary: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
-
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
-
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
-
     --accent: 240 3.7% 15.9%;
     --accent-foreground: 0 0% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
-
     --radius: 0.5rem;
   }
 }
-
 @layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    overflow-x: hidden;
-  }
-  
-  /* Ensure mobile viewport is properly contained */
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; overflow-x: hidden; }
   @media (max-width: 768px) {
-    html, body {
-      overflow-x: hidden;
-      width: 100%;
-      max-width: 100vw;
-    }
+    html, body { overflow-x: hidden; width: 100%; max-width: 100vw; }
   }
 }
 
-::-webkit-scrollbar {
-  width: 0.1em;
+/* Scrollbar */
+::-webkit-scrollbar { width: 0.1em; }
+::-webkit-scrollbar-track { box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+::-webkit-scrollbar-thumb { background-color: darkgrey; outline: 1px solid slategrey; }
+
+/* ==================== */
+/* Botpress Drawer Chat */
+/* ==================== */
+.bp-widget-container { 
+  z-index: 99999 !important;
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  height: 100vh !important;
+  width: 400px !important;
+  max-width: 90vw;
+  background: #fff;
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s ease-out, opacity 0.25s ease-in-out !important;
+  box-shadow: -2px 0 15px rgba(0,0,0,0.2);
+}
+.bp-widget-container.bp-open {
+  transform: translateX(0%);
+  opacity: 1;
+  pointer-events: auto;
 }
 
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
-
-/* Intro Component Styles */
-.intro_container__2gK1r {
-  position: relative;
-  z-index: 1;
-  padding: 2rem 0;
-  overflow: hidden;
-}
-
-.intro_title__0zIrm {
-  position: relative;
-  z-index: 1;
-  font-size: 1.5rem;
-  font-weight: 900;
-  line-height: 0.91;
-  max-width: 80%;
-  margin: 0 auto;
-  color: white;
-}
-
-@media (max-width: 800px) {
-  .intro_title__0zIrm {
-    font-size: 1rem;
-    margin: 0;
-    margin-top: 1rem;
-    padding: 0 1rem;
-    max-width: unset;
+/* Full-screen on mobile */
+@media (max-width: 768px) {
+  .bp-widget-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
   }
+}
+
+/* Hide default Botpress launcher */
+.bp-widget-launcher {
+  display: none !important;
+}
+
+/* ==================== */
+/* Chatbot Floating Icon + Bubble */
+/* ==================== */
+.bp-widget-button { 
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+/* Permanent Speech Bubble */
+.bp-widget-button::before {
+  content: "Hi! I’m Smarty 🚀\A Your event guide!";
+  white-space: pre-line;
+  position: absolute;
+  right: 110%;
+  bottom: 20%;
+  background: #ffffff;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 180px;
+  line-height: 1.3;
+  z-index: 100001;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Bubble Arrow */
+.bp-widget-button::after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  bottom: 35%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent #ffffff transparent transparent;
+  opacity: 1;
+}
+
+/* Chatbot Glow */
+.bp-widget-button {
+  filter: drop-shadow(0 0 10px rgba(77, 166, 255, 0.3));
+  transition: transform 0.2s ease-in-out, filter 0.3s ease-in-out;
+}
+.bp-widget-button:hover {
+  filter: drop-shadow(0 0 20px rgba(77, 166, 255, 0.6));
+  transform: scale(1.05);
 }

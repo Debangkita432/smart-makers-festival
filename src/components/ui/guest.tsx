@@ -2,6 +2,8 @@
 import React, { useEffect, useRef, useCallback, useState } from "react";
 import { PanInput, WheelInput } from "@egjs/react-axes";
 import { orbitronFont } from "@/lib/fonts";
+import useSound from "@/hooks/sound";
+import Image from "next/image";
 
 const images = [
   { src: "/guest1.jpeg" },
@@ -10,7 +12,6 @@ const images = [
   { src: "/guest4.jpeg" },
   { src: "/guest5.jpeg" },
   { src: "/guest6.jpeg" },
- 
   { src: "/guest8.jpeg" },
   { src: "/guest9.jpeg" },
   { src: "/guest10.jpeg" },
@@ -26,21 +27,27 @@ export default function Carousel(): React.JSX.Element {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const updateTransform = (distance = 500) => {
-    if (carouselRef.current) {
-      const rotation = -currentIndex * ANGLE; // snap to index
-      carouselRef.current.style.transform = `translateZ(-${distance}px) rotateY(${rotation}deg)`;
-    }
-  };
+  const playSound = useSound("/sound/smf.mp3");
+
+  // Wrapped in useCallback to prevent stale closure warning
+  const updateTransform = useCallback(
+    (distance = 500) => {
+      if (carouselRef.current) {
+        const rotation = -currentIndex * ANGLE;
+        carouselRef.current.style.transform = `translateZ(-${distance}px) rotateY(${rotation}deg)`;
+      }
+    },
+    [currentIndex]
+  );
 
   const rotateStep = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % COUNT); // step to next image
+    setCurrentIndex((prev) => (prev + 1) % COUNT);
     timeoutRef.current = setTimeout(rotateStep, 3000);
   }, []);
 
   useEffect(() => {
     updateTransform(window.innerWidth < 640 ? 300 : 500);
-  }, [currentIndex]);
+  }, [currentIndex, updateTransform]);
 
   useEffect(() => {
     timeoutRef.current = setTimeout(rotateStep, 3000);
@@ -59,11 +66,18 @@ export default function Carousel(): React.JSX.Element {
   }, []);
 
   const rotateLeft = () => {
+    playSound();
     setCurrentIndex((prev) => (prev - 1 + COUNT) % COUNT);
   };
 
   const rotateRight = () => {
+    playSound();
     setCurrentIndex((prev) => (prev + 1) % COUNT);
+  };
+
+  const handleMagnify = (src: string) => {
+    playSound();
+    setSelectedImage(src);
   };
 
   return (
@@ -85,7 +99,7 @@ export default function Carousel(): React.JSX.Element {
                 <div
                   className="list_cd carousel-touch-area"
                   style={{ backgroundImage: `url(${item.src})` }}
-                  onClick={() => setSelectedImage(item.src)}
+                  onClick={() => handleMagnify(item.src)}
                 />
               </figure>
             ))}
@@ -101,7 +115,13 @@ export default function Carousel(): React.JSX.Element {
       {/* Modal for magnified image */}
       {selectedImage && (
         <div className="modal" onClick={() => setSelectedImage(null)}>
-          <img src={selectedImage} alt="Magnified" className="modal-image" />
+          <Image
+            src={selectedImage}
+            alt="Magnified"
+            width={800}
+            height={600}
+            className="modal-image"
+          />
         </div>
       )}
 

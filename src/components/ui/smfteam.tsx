@@ -5,6 +5,7 @@ import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { FiLinkedin, FiMail } from "react-icons/fi";
 import { useState } from "react";
+import useSound from "@/hooks/sound"; // <-- Import sound hook
 
 const facultyMembers = [
   { name: "Prof. Dr. Banani Chakraborty", role: "President of IEM", image: "/banani_maam.png" },
@@ -21,7 +22,7 @@ const teamMembers = [
   },
   { 
     name: "Debangshu Chatterjee", 
-    linkedin: "https://www.linkedin.com/in/debangshu-chatterjee-858859282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+    linkedin: "https://www.linkedin.com/in/debangshu-chatterjee-858859282", 
     mail: "mailto:debangshuchatterjee2005@gmail.com", 
     image: "/debangshu.jpeg" 
   },
@@ -42,10 +43,12 @@ const teamMembers = [
 // Reusable Card Component
 function MemberCard({ member, showIcons = false }: { member: any; showIcons?: boolean }) {
   const [active, setActive] = useState(false);
+  const playClickSound = useSound("/sound/smf.mp3"); // <-- Sound for clicks
 
   const handleClick = () => {
+    playClickSound(); // <-- Play sound on card click
     setActive(true);
-    setTimeout(() => setActive(false), 2000);
+    setTimeout(() => setActive(false), 1500);
   };
 
   return (
@@ -63,7 +66,7 @@ function MemberCard({ member, showIcons = false }: { member: any; showIcons?: bo
           src={member.image}
           alt={member.name}
           fill
-          className="object-cover object-top" // fixed: no rounded-lg, prevents image from spilling
+          className="object-cover object-top"
         />
       </div>
 
@@ -82,6 +85,7 @@ function MemberCard({ member, showIcons = false }: { member: any; showIcons?: bo
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:text-blue-800 transition"
+              onClick={playClickSound} // <-- Play sound on icon click
             >
               <FiLinkedin className="w-4 h-4" />
             </a>
@@ -90,6 +94,7 @@ function MemberCard({ member, showIcons = false }: { member: any; showIcons?: bo
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-700 hover:text-black transition"
+              onClick={playClickSound} // <-- Play sound on icon click
             >
               <FiMail className="w-4 h-4" />
             </a>

@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { orbitronFont } from "@/lib/fonts";
+import useSound from "@/hooks/sound"; // <-- Sound hook
 
 const images = [
   { alt: "", src: "/Aryabhatta.png" },
@@ -31,7 +32,10 @@ const images = [
 ];
 
 export default function Home() {
-  const registerFormLink = "https://forms.gle/WGzAWP7i4f4G3y6C8"; // <-- Updated Google Form link
+  const registerFormLink = "https://forms.gle/WGzAWP7i4f4G3y6C8"; 
+
+  const playEventsSound = useSound("/sound/smf2.mp3"); // <-- Events button sound
+  const playRegisterSound = useSound("/sound/smf.mp3"); // <-- Register Now button sound
 
   return (
     <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col py-0 pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 font-orbitron">
@@ -39,11 +43,12 @@ export default function Home() {
         <HeroParallax images={images} />
         <LabIntro />
 
-        {/* Register Now button for mobile and tablet only */}
+        {/* Register Now & Events button for mobile and tablet only */}
         <div className="flex justify-center mt-8 mb-4 md:hidden">
           <div className="flex gap-4">
             <Button
               asChild
+              onClick={playEventsSound} // <-- Plays smf2.mp3
               className={cn(
                 "px-8 py-3 text-base font-semibold rounded-[1rem] w-32",
                 "bg-transparent text-white border-2 border-[#001f4d] hover:bg-[#001f4d]/20 hover:border-[#000d26]",
@@ -56,6 +61,7 @@ export default function Home() {
             </Button>
             <Button
               asChild
+              onClick={playRegisterSound} // <-- Plays smf.mp3
               className={cn(
                 "px-8 py-3 text-sm font-semibold rounded-[1rem] border-2 border-transparent w-32",
                 "bg-[#001f4d] text-white hover:bg-[#000d26] hover:border-[#4da6ff]",
@@ -71,15 +77,15 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 🧩 Spacer to avoid overlap */}
+        {/* Spacer */}
         <div className="mt-10 sm:mt-20" />
 
-        {/* 🧩 Collaborator Carousel */}
+        {/* Collaborator Carousel */}
         <SponsorCarousel />
 
         <Team />
 
-        {/*  Map Section */}
+        {/* Map Section */}
         <MapSection />
       </Lenis>
     </main>

@@ -4,6 +4,7 @@ import { orbitronFont } from "@/lib/fonts";
 import { motion } from "framer-motion";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
+import useSound from "@/hooks/sound"; // <-- Import sound hook
 
 const timelineData = [
   { title: "Maker's Workshop", date: "5th September, 2025", location: "IEM" },
@@ -22,6 +23,12 @@ const timelineData = [
 
 export default function Timeline() {
   const router = useRouter();
+  const playClick = useSound("/sound/smf2.mp3"); // <-- Play smf2.mp3
+
+  const handleCardClick = () => {
+    playClick(); // Play sound
+    setTimeout(() => router.push("/register"), 150); // Slight delay for sound
+  };
 
   return (
     <div className="w-full mt-24 max-w-6xl mx-auto px-6">
@@ -42,7 +49,7 @@ export default function Timeline() {
             className="group relative w-full border-b border-white/20 py-8 px-4 cursor-pointer transition-all duration-300 rounded-xl 
                        hover:shadow-[0_0_25px_rgba(0,191,255,0.6)] 
                        hover:bg-gradient-to-r hover:from-[#001F3F]/40 hover:to-[#00bfff]/10"
-            onClick={() => router.push('/register')}
+            onClick={handleCardClick}
           >
             <div className="flex items-center justify-between">
               <div>
