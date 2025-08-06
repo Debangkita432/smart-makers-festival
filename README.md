@@ -28,11 +28,7 @@ Built to provide a seamless and engaging experience for students, participants, 
 
 ---
 
-## 🌐 Live Website
 
-🌐 [https://smart-makers-festival.vercel.app](https://smart-makers-festival.vercel.app)
-
----
 
 ## 📁 Folder Structure
 
