@@ -1,142 +1,75 @@
-# Smart Maker Festival-2k25
+# Smart Maker Festival 2k25 🎉
 
-A modern web application for the Sanskriti 2025 cultural festival, built with Next.js, TypeScript, Prisma, and Tailwind CSS.
-
-## 🔗 Repository
-
-```
-git clone https://github.com/Rustix69/Sanskriti-2k25.git
-```
-
-## 🚀 Tech Stack
-
-- **Framework**: [Next.js](https://nextjs.org/) (React Framework)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Database ORM**: [Prisma](https://www.prisma.io/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [Radix UI](https://www.radix-ui.com/) with [shadcn/ui](https://ui.shadcn.com/)
-- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
-- **Animation Libraries**: GSAP, Framer Motion
-- **Deployment**: Docker, Vercel
-- **3D Rendering**: Three.js with React Three Fiber
-
-## 📋 Features
-
-- **Event Management**: Registration and coordination for cultural events
-- **Admin Dashboard**: Comprehensive admin portal for event management
-- **Authentication**: Secure user authentication system
-- **Responsive Design**: Mobile-friendly interface with modern animations
-- **Email Notifications**: Automated emails for registrations and updates
-
-## 🛠️ Setup Instructions
-
-### Prerequisites
-
-- Node.js (v18 or higher)
-- npm or yarn
-- Database (PostgreSQL recommended)
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Rustix69/Sanskriti-2k25.git
-   cd Sanskriti-2k25
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. Environment Setup:
-   Create a `.env` file in the root directory with the following variables:
-   ```
-   # Database
-   DATABASE_URL="postgresql://username:password@localhost:5432/sanskriti2025"
-   
-   # NextAuth
-   NEXTAUTH_SECRET="your-secret-key"
-   NEXTAUTH_URL="http://localhost:3000"
-   
-   # Email (Optional)
-   EMAIL_SERVER_HOST=
-   EMAIL_SERVER_PORT=
-   EMAIL_SERVER_USER=
-   EMAIL_SERVER_PASSWORD=
-   EMAIL_FROM=
-   
-   # Razorpay (Optional)
-   RAZORPAY_KEY_ID=
-   RAZORPAY_KEY_SECRET=
-   ```
-
-4. Set up the database:
-   ```bash
-   npx prisma migrate dev
-   ```
-
-5. Start the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-### Docker Setup (Alternative)
-
-1. Build and run with Docker Compose:
-   ```bash
-   docker-compose up -d
-   ```
-
-## 🧑‍💻 Development Workflow
-
-1. Create a new branch for your feature:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-2. Make changes and commit:
-   ```bash
-   git add .
-   git commit -m "Add your feature description"
-   ```
-
-3. Push to your branch:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-4. Create a Pull Request to the main branch.
-
-## 📁 Project Structure
-
-- `/src/app`: Next.js application routes
-- `/src/components`: Reusable UI components
-- `/src/lib`: Utility functions and libraries
-- `/prisma`: Database schema and migrations
-- `/public`: Static assets
-
-## 🔧 Available Scripts
-
-- `npm run dev`: Start development server
-- `npm run build`: Build for production
-- `npm run start`: Start production server
-- `npm run lint`: Run linting checks
-- `npx prisma studio`: Launch Prisma Studio for database management
-
-## 📝 License
-
-[MIT](LICENSE)
-
-## 👥 Contributors
-
-- [Your Name](https://github.com/Rustix69)
-- [Add other contributors here]
+Official website for the **Smart Maker Festival 2025** hosted at **IEM, Salt Lake**.  
+Built to provide a seamless and engaging experience for students, participants, and guests to explore events, announcements, gallery highlights, and registration processes.
 
 ---
 
-For questions or support, please open an issue in the repository. 
+## 🚀 Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components:** [shadcn/ui](https://ui.shadcn.com/), [Radix UI](https://www.radix-ui.com/)
+- **Animation:** [Framer Motion](https://www.framer.com/motion/), GSAP
+- **3D Effects:** [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/)
+- **Deployment:** [Vercel](https://vercel.com/)
+
+---
+
+## 📋 Features
+
+- 🎭 Event categories with detailed descriptions  
+- 📥 Registration via embedded or external Google Forms  
+- 📱 Mobile-first responsive layout  
+- 🎞️ Smooth transitions and creative animations  
+- 📸 Media gallery for highlights and memories  
+- 🔔 Real-time announcements and updates (static or linked)
+
+---
+
+## 🌐 Live Website
+
+🌐 [https://smart-makers-festival.vercel.app](https://smart-makers-festival.vercel.app)
+
+---
+
+## 📁 Folder Structure
+
+```bash
+├── public/              # Static files (images, videos, icons)
+├── src/
+│   ├── app/             # Next.js App Router pages
+│   ├── components/      # Reusable UI components
+│   ├── lib/             # Utility functions and helpers
+│   └── styles/          # Tailwind and custom CSS
+ory. 
+🧪 Development Setup (for team use only)
+This is a frontend-only project with no backend or database.
+Form submissions and payments are handled via external platforms.
+
+Prerequisites:
+Node.js (v18 or later)
+
+npm or yarn
+
+Installation:
+git clone https://github.com/Debangkita432/smart-makers-festival.git
+cd smart-makers-festival
+npm install
+npm run dev
+
+Disclaimer
+This website was created solely for Smart Maker Festival 2k25, a cultural fest hosted by IEM, Salt Lake.
+It is inspired by publicly available open-source projects and frontend templates.
+All code, content, and design have been customized or rewritten to suit the needs of this specific event.
+This project does not include a backend, does not store user data, and does not process payments directly.
+
+.
+
+🙏 Acknowledgement
+Special thanks to all the contributors of the open-source community whose projects inspired parts of the structure and design.
+We deeply value the importance of open collaboration in the developer ecosystem.
+
+
+Payments and form submissions are securely handled via external services like Google Forms and verified UPI/Payment links.
