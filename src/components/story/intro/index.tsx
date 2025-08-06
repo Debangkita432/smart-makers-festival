@@ -1,10 +1,20 @@
 "use client";
 
-import Image from "next/image";
+import { useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { orbitronFont } from "@/lib/fonts";
 
 export const LabIntro = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const handlePlay = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
   return (
     <div className="intro_container__2gK1r">
       {/* Heading */}
@@ -29,19 +39,59 @@ export const LabIntro = () => {
         </h2>
       </div>
 
-      {/* Image + Description */}
+      {/* Portrait Video Section */}
       <div className="flex flex-col lg:flex-row items-center justify-center gap-10 mt-16 mb-12 px-6">
-        <div className="flex justify-center w-full lg:w-1/2">
-          <Image
-            src="/coming.png"
-            alt="Smart Maker Festival 2025 Logo"
-            width={500}
-            height={500}
-            className="object-contain"
-            priority
+        <div className="relative flex justify-center">
+          {/* Video with poster thumbnail */}
+          <video
+            ref={videoRef}
+            src="/video/recap.mp4"
+            className="object-contain rounded-lg shadow-lg w-[300px] h-[500px] md:w-[360px] md:h-[640px] bg-black"
+            controls={isPlaying}
+            onPause={() => setIsPlaying(false)}
+            poster="/video/recap-thumbnail.jpg" // Thumbnail before play
           />
+
+          {/* Overlay (shown until play) */}
+          {!isPlaying && (
+            <div className="absolute inset-0 bg-black/50 rounded-lg flex flex-col items-center justify-center text-white transition-opacity duration-300">
+              {/* REC text with dot */}
+              <div className="absolute top-4 left-4 text-sm flex items-center gap-2">
+                <span className="font-bold">REC</span>
+                <span className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
+              </div>
+
+              {/* Flashback Text */}
+              <h1 className="text-2xl md:text-3xl font-bold tracking-wide text-center">
+                FLASHBACK 2024
+              </h1>
+
+              {/* Frame Corners */}
+              <div className="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-white"></div>
+              <div className="absolute top-0 right-0 w-12 h-12 border-t-4 border-r-4 border-white"></div>
+              <div className="absolute bottom-0 left-0 w-12 h-12 border-b-4 border-l-4 border-white"></div>
+              <div className="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-white"></div>
+
+              {/* Play Button */}
+              <button
+                onClick={handlePlay}
+                className="mt-6 bg-white text-black p-5 rounded-full shadow-lg hover:scale-110 transition"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="36"
+                  height="36"
+                  fill="black"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
 
+        {/* Description */}
         <div className="w-full lg:w-1/2 text-white text-sm md:text-lg leading-relaxed">
           <p className="text-center lg:text-left">
             The <strong className="text-[#00BFFF]">SMART Maker Festival 2025</strong> is a non-profit,
