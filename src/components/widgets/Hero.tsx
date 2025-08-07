@@ -32,7 +32,7 @@ export const HeroParallax = ({
 }: {
   images: ImageType[];
 }) => {
-  const rows = chunkArray(images, 5); // dynamically split images into rows of 5
+  const rows = chunkArray(images, 5); // split into rows of 5
   const ref = React.useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = React.useState(false);
 
@@ -40,7 +40,6 @@ export const HeroParallax = ({
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -61,6 +60,7 @@ export const HeroParallax = ({
     ),
     springConfig
   );
+
   const translateXReverse = useSpring(
     useTransform(
       scrollYProgress,
@@ -69,6 +69,7 @@ export const HeroParallax = ({
     ),
     springConfig
   );
+
   const rotateX = useSpring(
     useTransform(scrollYProgress, [0, 0.15], [isMobile ? 5 : 12, 0]),
     springConfig
@@ -93,7 +94,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="-z-10 h-auto overflow-x-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] w-full"
+      className="-z-10 h-auto pb-40 overflow-x-hidden overflow-y-visible antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] w-full"
     >
       <Header />
 
@@ -142,8 +143,7 @@ export const Header = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 1, ease: "easeOut" }}
         className={cn(
-          "pt-20 text-center text-5xl md:text-6xl lg:text-9xl font-extrabold " +
-            "text-[#00bfff] drop-shadow-[0_0_25px_rgba(0,191,255,0.7)]",
+          "pt-20 text-center text-5xl md:text-6xl lg:text-9xl font-extrabold text-[#00bfff] drop-shadow-[0_0_25px_rgba(0,191,255,0.7)]",
           orbitronFont.className
         )}
       >
@@ -174,17 +174,26 @@ export const ImageCard = ({
   return (
     <motion.div
       style={{ x: translate }}
-      whileHover={{ scale: 1.05, y: -10 }} // hover zoom
+      whileHover={{ scale: 1.07, rotate: 1.5 }}
       transition={{ type: "spring", stiffness: 200, damping: 20 }}
       className="w-[12rem] sm:w-[18rem] md:w-[22rem] flex-shrink-0 origin-left"
     >
-      <div className="w-full aspect-square relative rounded-lg overflow-hidden shadow-md">
+      <div className="relative w-full aspect-square overflow-visible rounded-xl group shadow-lg shadow-[#00bfff]/20 transition-all duration-500">
+        {/* Main image */}
         <Image
           src={image.src}
           alt={image.alt}
           fill
-          className="object-cover object-center"
+          className="object-cover object-center transition-transform duration-700 group-hover:scale-110 group-hover:blur-[1px]"
         />
+
+        {/* Text overlay (slide-up effect) */}
+        <div className="absolute bottom-[-100%] left-0 w-full bg-[#000000a0] text-white text-xs sm:text-sm p-2 text-center group-hover:bottom-0 transition-all duration-500 ease-in-out backdrop-blur-md">
+          {image.alt}
+        </div>
+
+        {/* Optional blue glow border */}
+        <div className="absolute inset-0 rounded-xl border border-[#00bfff]/10 group-hover:border-[#00bfff]/50 group-hover:shadow-[0_0_30px_5px_rgba(0,191,255,0.5)] transition-all duration-500 pointer-events-none" />
       </div>
     </motion.div>
   );

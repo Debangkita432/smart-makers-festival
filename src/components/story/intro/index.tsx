@@ -1,19 +1,11 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { orbitronFont } from "@/lib/fonts";
 
 export const LabIntro = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  const handlePlay = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
-  };
 
   return (
     <div className="intro_container__2gK1r">
@@ -21,72 +13,70 @@ export const LabIntro = () => {
       <div className="text-center text-white space-y-1 px-4 md:px-12">
         <h2
           className={cn(
-            "intro_title__0zIrm tracking-widest text-lg md:text-2xl lg:text-3xl font-bold",
+            "tracking-widest text-lg md:text-2xl lg:text-3xl font-bold",
             orbitronFont.className
           )}
-          style={{ fontWeight: 700 }}
         >
           Unveiling the
         </h2>
         <h2
           className={cn(
-            "intro_title__0zIrm tracking-widest text-lg md:text-2xl lg:text-3xl font-bold",
+            "tracking-widest text-lg md:text-2xl lg:text-3xl font-bold",
             orbitronFont.className
           )}
-          style={{ fontWeight: 700 }}
         >
           Smart Maker Festival
         </h2>
       </div>
 
-      {/* Portrait Video Section */}
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-10 mt-16 mb-12 px-6">
+      {/* Video + Description */}
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-10 mt-16 mb-12 px-6 pb-28 relative z-10">
         <div className="relative flex justify-center">
-          {/* Video with poster thumbnail */}
-          <video
-            ref={videoRef}
-            src="/video/recap.mp4"
-            className="object-contain rounded-lg shadow-lg w-[300px] h-[500px] md:w-[360px] md:h-[640px] bg-black"
-            controls={isPlaying}
-            onPause={() => setIsPlaying(false)}
-            poster="/video/recap-thumbnail.jpg" // Thumbnail before play
-          />
+          {isPlaying ? (
+            <div className="w-[300px] h-[500px] md:w-[360px] md:h-[640px] rounded-lg shadow-lg overflow-hidden">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/Mwr9iYDwBd8?autoplay=1&mute=1"
+                title="Flashback 2024"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+              ></iframe>
+            </div>
+          ) : (
+            <div className="relative w-[300px] h-[500px] md:w-[360px] md:h-[640px] bg-black rounded-lg shadow-lg overflow-hidden mt-4">
+              {/* <img
+                src="/video/recap-thumbnail.jpg"
+                alt="Flashback 2024"
+                className="w-full h-full object-cover object-center opacity-60"
+              /> */}
 
-          {/* Overlay (shown until play) */}
-          {!isPlaying && (
-            <div className="absolute inset-0 bg-black/50 rounded-lg flex flex-col items-center justify-center text-white transition-opacity duration-300">
-              {/* REC text with dot */}
-              <div className="absolute top-4 left-4 text-sm flex items-center gap-2">
-                <span className="font-bold">REC</span>
-                <span className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
-              </div>
+              <div className="absolute inset-0 bg-black/40 rounded-lg flex flex-col items-center justify-center text-white px-4 text-center">
+                <div className="absolute top-4 left-4 text-sm flex items-center gap-2">
+                  <span className="font-bold">REC</span>
+                  <span className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
+                </div>
 
-              {/* Flashback Text */}
-              <h1 className="text-2xl md:text-3xl font-bold tracking-wide text-center">
-                FLASHBACK 2024
-              </h1>
+                <h1 className="text-2xl md:text-3xl font-extrabold mb-4 drop-shadow-md tracking-wider">
+                  FLASHBACK 2024
+                </h1>
 
-              {/* Frame Corners */}
-              <div className="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-white"></div>
-              <div className="absolute top-0 right-0 w-12 h-12 border-t-4 border-r-4 border-white"></div>
-              <div className="absolute bottom-0 left-0 w-12 h-12 border-b-4 border-l-4 border-white"></div>
-              <div className="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-white"></div>
-
-              {/* Play Button */}
-              <button
-                onClick={handlePlay}
-                className="mt-6 bg-white text-black p-5 rounded-full shadow-lg hover:scale-110 transition"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="36"
-                  height="36"
-                  fill="black"
-                  viewBox="0 0 24 24"
+                <button
+                  onClick={() => setIsPlaying(true)}
+                  className="mt-2 bg-white text-black p-5 rounded-full shadow-lg hover:scale-110 transition"
                 >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="36"
+                    height="36"
+                    fill="black"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
+              </div>
             </div>
           )}
         </div>

@@ -32,23 +32,26 @@ const images = [
 ];
 
 export default function Home() {
-  const registerFormLink = "https://forms.gle/WGzAWP7i4f4G3y6C8"; 
+  const registerFormLink = "https://forms.gle/WGzAWP7i4f4G3y6C8";
 
   const playEventsSound = useSound("/sound/smf2.mp3"); // <-- Events button sound
   const playRegisterSound = useSound("/sound/smf.mp3"); // <-- Register Now button sound
 
   return (
-    <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col py-0 pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-20 lg:pb-24 font-orbitron">
+    <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col py-0 pt-8 sm:pt-12 lg:pt-16 pb-72 sm:pb-80 lg:pb-96 font-orbitron overflow-visible relative z-10">
       <Lenis>
+        {/* Hero Section */}
         <HeroParallax images={images} />
+
+        {/* Lab Intro with flashback */}
         <LabIntro />
 
-        {/* Register Now & Events button for mobile and tablet only */}
+        {/* Mobile-only Register + Events buttons */}
         <div className="flex justify-center mt-8 mb-4 md:hidden">
           <div className="flex gap-4">
             <Button
               asChild
-              onClick={playEventsSound} // <-- Plays smf2.mp3
+              onClick={playEventsSound}
               className={cn(
                 "px-8 py-3 text-base font-semibold rounded-[1rem] w-32",
                 "bg-transparent text-white border-2 border-[#001f4d] hover:bg-[#001f4d]/20 hover:border-[#000d26]",
@@ -61,7 +64,7 @@ export default function Home() {
             </Button>
             <Button
               asChild
-              onClick={playRegisterSound} // <-- Plays smf.mp3
+              onClick={playRegisterSound}
               className={cn(
                 "px-8 py-3 text-sm font-semibold rounded-[1rem] border-2 border-transparent w-32",
                 "bg-[#001f4d] text-white hover:bg-[#000d26] hover:border-[#4da6ff]",
@@ -83,9 +86,10 @@ export default function Home() {
         {/* Collaborator Carousel */}
         <SponsorCarousel />
 
+        {/* SMF Team Section */}
         <Team />
 
-        {/* Map Section */}
+        {/* Map */}
         <MapSection />
       </Lenis>
     </main>

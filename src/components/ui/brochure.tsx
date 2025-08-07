@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React from "react";
 import { Button } from "./button";
 import { cn } from "@/lib/utils";
@@ -10,24 +9,23 @@ export default function Brochure() {
 
   return (
     <div className="w-full flex justify-center my-8 px-4">
-      <Button
-        asChild
-        className={cn(
-          "px-6 py-3 text-sm sm:px-12 sm:py-5 sm:text-lg font-semibold rounded-[1rem]",
-          "bg-[#001f4d] text-white hover:bg-[#000d26]",
-          "shadow-[0_0_15px_4px_rgba(255,255,255,0.25)] hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.4)]",
-          orbitronFont.className
-        )}
+      <a
+        href="/brochure.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={playSound}
       >
-        <Link
-          href="/coming.png"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={playSound} // <-- Play sound on click
+        <Button
+          className={cn(
+            "px-6 py-3 text-sm sm:px-12 sm:py-5 sm:text-lg font-semibold rounded-[1rem]",
+            "bg-[#001f4d] text-white hover:bg-[#000d26]",
+            "shadow-[0_0_15px_4px_rgba(255,255,255,0.25)] hover:shadow-[0_0_25px_6px_rgba(255,255,255,0.4)]",
+            orbitronFont.className
+          )}
         >
           Download Event Brochure
-        </Link>
-      </Button>
+        </Button>
+      </a>
     </div>
   );
 }
