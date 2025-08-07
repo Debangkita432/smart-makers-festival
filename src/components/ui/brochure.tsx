@@ -10,7 +10,7 @@ export default function Brochure() {
   return (
     <div className="w-full flex justify-center my-8 px-4">
       <a
-        href="/brochure.pdf"
+        href="https://drive.google.com/uc?export=download&id=1O6ot6hHVfVGTee-7SNqV84s8DNgG4NHR"
         target="_blank"
         rel="noopener noreferrer"
         onClick={playSound}
