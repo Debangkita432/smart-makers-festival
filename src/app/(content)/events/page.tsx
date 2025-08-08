@@ -4,7 +4,7 @@ import Container from "@/components/shared/container";
 import { orbitronFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import Brochure from "@/components/ui/brochure";
-import Guest from "@/components/ui/guest";
+
 import Timeline from "@/components/ui/timeline";
 
 export default function EventsPage() {
@@ -27,7 +27,7 @@ export default function EventsPage() {
         <Brochure />
       </Container>
 
-      <Guest />
+     
     </div>
   );
 }

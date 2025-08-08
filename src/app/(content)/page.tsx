@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { orbitronFont } from "@/lib/fonts";
+import Guest from "@/components/ui/guest";
 import useSound from "@/hooks/sound"; // <-- Sound hook
 
 const images = [
@@ -34,19 +35,19 @@ const images = [
 export default function Home() {
   const registerFormLink = "https://forms.gle/WGzAWP7i4f4G3y6C8";
 
-  const playEventsSound = useSound("/sound/smf2.mp3"); // <-- Events button sound
-  const playRegisterSound = useSound("/sound/smf.mp3"); // <-- Register Now button sound
+  const playEventsSound = useSound("/sound/smf2.mp3");
+  const playRegisterSound = useSound("/sound/smf.mp3");
 
   return (
-    <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col py-0 pt-8 sm:pt-12 lg:pt-16 pb-72 sm:pb-80 lg:pb-96 font-orbitron overflow-visible relative z-10">
+    <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col py-0 pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-24 lg:pb-32 font-orbitron overflow-visible relative z-10">
       <Lenis>
         {/* Hero Section */}
         <HeroParallax images={images} />
 
-        {/* Lab Intro with flashback */}
+        {/* Lab Intro */}
         <LabIntro />
 
-        {/* Mobile-only Register + Events buttons */}
+        {/* Mobile-only Buttons */}
         <div className="flex justify-center mt-8 mb-4 md:hidden">
           <div className="flex gap-4">
             <Button
@@ -80,16 +81,19 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Spacer */}
-        <div className="mt-10 sm:mt-20" />
+        {/* Small Spacer */}
+        <div className="mt-6 sm:mt-10" />
 
-        {/* Collaborator Carousel */}
+        {/* Guest Section */}
+        <Guest />
+
+        {/* Sponsors Carousel */}
         <SponsorCarousel />
 
-        {/* SMF Team Section */}
+        {/* Team Section */}
         <Team />
 
-        {/* Map */}
+        {/* Map Section */}
         <MapSection />
       </Lenis>
     </main>

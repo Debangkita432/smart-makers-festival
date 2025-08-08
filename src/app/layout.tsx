@@ -1,21 +1,19 @@
 import "@/app/globals.css";
 import AppWrapper from "@/components/widgets/AppWrapper";
 import { cn } from "@/lib/utils";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { orbitronFont } from "@/lib/fonts";
 import { Header } from "@/components/widgets/Header";
 import Footer from "@/components/widgets/Footer";
 import { StarsCanvas } from "@/components/ui/Stars";
-// import BotpressLoader from "@/components/widgets/botpressloader"; // NEW
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-
-export const metadata: Metadata = {
+export const metadata = {
   title: "Smart Maker Festival 2025",
   description: "Smart Maker Festival 2025",
-  icons: { icon: "/coming.png" },
+  icons: { icon: "/logo.png" },
 };
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -27,7 +25,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <Footer />
         </AppWrapper>
-   
       </body>
     </html>
   );
