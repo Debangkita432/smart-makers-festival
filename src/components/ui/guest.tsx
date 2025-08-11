@@ -29,7 +29,6 @@ export default function Carousel(): React.JSX.Element {
 
   const playSound = useSound("/sound/smf.mp3");
 
-  // Wrapped in useCallback to prevent stale closure warning
   const updateTransform = useCallback(
     (distance = 500) => {
       if (carouselRef.current) {
@@ -41,7 +40,7 @@ export default function Carousel(): React.JSX.Element {
   );
 
   const rotateStep = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % COUNT);
+    setCurrentIndex((prev) => prev + 1); // endless forward movement
     timeoutRef.current = setTimeout(rotateStep, 3000);
   }, []);
 
@@ -67,12 +66,12 @@ export default function Carousel(): React.JSX.Element {
 
   const rotateLeft = () => {
     playSound();
-    setCurrentIndex((prev) => (prev - 1 + COUNT) % COUNT);
+    setCurrentIndex((prev) => prev - 1);
   };
 
   const rotateRight = () => {
     playSound();
-    setCurrentIndex((prev) => (prev + 1) % COUNT);
+    setCurrentIndex((prev) => prev + 1);
   };
 
   const handleMagnify = (src: string) => {
@@ -112,7 +111,6 @@ export default function Carousel(): React.JSX.Element {
         <button onClick={rotateRight}>&rarr;</button>
       </div>
 
-      {/* Modal for magnified image */}
       {selectedImage && (
         <div className="modal" onClick={() => setSelectedImage(null)}>
           <Image
@@ -223,7 +221,6 @@ export default function Carousel(): React.JSX.Element {
           background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Modal styling */
         .modal {
           position: fixed;
           top: 0;
